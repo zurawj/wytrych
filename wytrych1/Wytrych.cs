@@ -13,14 +13,14 @@ namespace wytrych1
         public bool zlamanieWytrycha(int szansa)
         {
             Random rnd = new Random();
-           
+        //edit 
                 int los = rnd.Next(0, 99);
             if (los > szansa)
             {
                 return false;
             }
             else return true;
-      
+            
         }
 
         
