@@ -15,6 +15,15 @@ namespace wytrych1
         public int iloscSkrzyni { get; set; }
 
         public int iloscPunktow { get; set; }
+
+        public Menu()
+        {   //domyslny poziom latwy
+            iloscWytrychow = 10;
+            dlugosc = 4;
+            szansa = 30;
+            iloscSkrzyni = 0;
+            iloscPunktow = 0;
+        }
         public void WyswietlMenu()
         {
             Console.WriteLine("1. Nowa gra");
@@ -54,7 +63,7 @@ namespace wytrych1
 
 
 
-        public int UstawSzanseZlamaniaWytrychu(int szansa)
+        public int UstawSzanseZlamaniaWytrychu(int szansa) //trzeba zmienic
         {
             switch (szansa)
             {
@@ -73,7 +82,7 @@ namespace wytrych1
 
             }
         }
-        public int generujIloscPunktow(int szansa)
+        public int generujIloscPunktow(int szansa) //jakies sensowe zakresy
         {
             Random rnd = new Random();
 

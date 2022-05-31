@@ -16,29 +16,24 @@ namespace wytrych1
            
             while (true)
             {
-                menu.iloscWytrychow = 10;
-                menu.dlugosc = 4;
-                menu.szansa = 30;
-                menu.iloscSkrzyni = 0;
-                menu.iloscPunktow = 0;
+
                 menu.WyswietlMenu();
                 String input = Console.ReadLine();
-
-                
+                              
 
                 Console.Clear();
                 
                 if (input == "1")
                 {
-                    
+                    Skrzynia skrzynia = new Skrzynia(menu.dlugosc);
                     while (true)
                     {
                         Console.WriteLine("Otwórz skrzynie");
-                        Skrzynia skrzynia = new Skrzynia(menu.dlugosc);
+                        
 
                         skrzynia.GenerowanieSekwencji(menu.dlugosc);
                         
-                        menu.iloscPunktow += Gra(menu.iloscWytrychow, menu.dlugosc, skrzynia.skrzynia, menu.iloscPunktow, menu.szansa);
+                        menu.iloscPunktow += Graj(menu.iloscWytrychow, menu.dlugosc, skrzynia.skrzynia, menu.iloscPunktow, menu.szansa);
                         menu.iloscSkrzyni++;
                         while (true)
                         {
@@ -46,11 +41,10 @@ namespace wytrych1
                             input = Console.ReadLine();
                             if (input == "1")
                             {
-                                skrzynia = new Skrzynia(menu.dlugosc);
-
+                                Console.WriteLine("Otwórz skrzynie");
                                 skrzynia.GenerowanieSekwencji(menu.dlugosc);
 
-                                menu.iloscPunktow += Gra(menu.iloscWytrychow, menu.dlugosc, skrzynia.skrzynia, menu.iloscPunktow, menu.szansa);
+                                menu.iloscPunktow += Graj(menu.iloscWytrychow, menu.dlugosc, skrzynia.skrzynia, menu.iloscPunktow, menu.szansa);
                                 menu.iloscSkrzyni++;
                             }
                             else if (input == "2")
@@ -236,7 +230,7 @@ namespace wytrych1
 
 
         }
-        private static int Gra(int iloscWytrychow, int dlugosc, char[] sekwencja,int iloscPunktow, int szansa)
+        private static int Graj(int iloscWytrychow, int dlugosc, char[] sekwencja,int iloscPunktow, int szansa)
         {
             
             int counter = 0;
