@@ -33,7 +33,7 @@ namespace wytrych1
 
                         skrzynia.GenerowanieSekwencji(menu.dlugosc);
                         
-                        menu.iloscPunktow += Graj(skrzynia,menu); //graj powinno otrzymywac obiekt skrzynia i menu
+                        menu.iloscPunktow += Graj(skrzynia,menu); 
                         menu.iloscSkrzyni++;
                         while (true)
                         {
@@ -197,29 +197,7 @@ namespace wytrych1
             else return true;
 
         }
-        private static int generujIloscPunktow(int szansa)
-        {
-            Random rnd = new Random();
 
-            if (szansa == 10)
-            {
-                int los = rnd.Next(5, 20);
-                return los;
-            }
-            else if (szansa == 20)
-            {
-                int los = rnd.Next(15, 30);
-                return los;
-            }
-            else if (szansa == 30)
-            {
-                int los = rnd.Next(25, 40);
-                return los;
-            }
-            else return 0;
-
-
-        }
         private static int Graj(Skrzynia skrzynia, Menu menu)
         {
             
@@ -234,7 +212,7 @@ namespace wytrych1
                     {
                         Console.WriteLine("OK");
                         counter++;
-                        menu.iloscPunktow=generujIloscPunktow(menu.szansa);
+                        menu.iloscPunktow=menu.generujIloscPunktow(menu.szansa);
 
                     }
                     else if ((znak != skrzynia.skrzynia[counter]) && (znak == 'L' || znak == 'P'))

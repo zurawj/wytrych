@@ -106,6 +106,7 @@ namespace wytrych1
             
 
         }
+
         public void Sleep()
         {   
             Thread.Sleep(1000);
