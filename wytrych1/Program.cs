@@ -25,13 +25,13 @@ namespace wytrych1
                 
                 if (input == "1")
                 {
-                    Skrzynia skrzynia = new Skrzynia(menu.dlugosc);
+                    Skrzynia skrzynia = new Skrzynia(menu.dlugoscSekwencji);
                     while (true)
                     {
                         Console.WriteLine("Otwórz skrzynie");
                         
 
-                        skrzynia.GenerowanieSekwencji(menu.dlugosc);
+                        skrzynia.GenerowanieSekwencji(menu.dlugoscSekwencji);
                         
                         menu.iloscPunktow += Graj(skrzynia,menu); 
                         menu.iloscSkrzyni++;
@@ -42,7 +42,7 @@ namespace wytrych1
                             if (input == "1")
                             {
                                 Console.WriteLine("Otwórz skrzynie");
-                                skrzynia.GenerowanieSekwencji(menu.dlugosc);
+                                skrzynia.GenerowanieSekwencji(menu.dlugoscSekwencji);
 
                                 menu.iloscPunktow += Graj(skrzynia, menu);
                                 menu.iloscSkrzyni++;
@@ -84,28 +84,25 @@ namespace wytrych1
                                 if (input == "1")
                                 {
                                     Console.WriteLine("Ustawiono poziom łatwy");
-                                    menu.iloscWytrychow = 20;
-                                    menu.dlugosc = 5;
-                                    menu.szansa = 20;
-                                    menu.Sleep();
+                                    menu.UstawPoziomLatwy();
+                                    Console.WriteLine("Ilosc wytrychów: " + menu.iloscWytrychow + "\nDługość sekwencji: " + menu.dlugoscSekwencji);
+                                    menu.Sleep(2000);
                                     Console.Clear();
 
                                 }
                                 else if (input == "2")
                                 {
                                     Console.WriteLine("Ustawiono poziom średni");
-                                    menu.iloscWytrychow = 10;
-                                    menu.dlugosc = 7;
-                                    menu.szansa = 30;
-                                    menu.Sleep();
+                                    menu.UstawPoziomSredni();
+                                    Console.WriteLine("Ilosc wytrychów: " + menu.iloscWytrychow + "\nDługość sekwencji: " + menu.dlugoscSekwencji);
+                                    menu.Sleep(2000);
                                     Console.Clear();
                                 }
                                 else if (input == "3")
                                 {
                                     Console.WriteLine("Ustawiono poziom trudny");
-                                    menu.iloscWytrychow = 5;
-                                    menu.dlugosc = 10;
-                                    menu.szansa = 40;
+                                    menu.UstawPoziomTrudny();
+
                                     menu.Sleep();
                                     Console.Clear();
 

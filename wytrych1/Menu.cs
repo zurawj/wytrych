@@ -11,7 +11,7 @@ namespace wytrych1
     {
         public int iloscWytrychow { get; set; }
         public int szansa { get; set; }
-        public int dlugosc { get; set; }
+        public int dlugoscSekwencji { get; set; }
 
         public int iloscSkrzyni { get; set; }
 
@@ -20,7 +20,7 @@ namespace wytrych1
         public Menu()
         {   //domyslny poziom latwy
             iloscWytrychow = 10;
-            dlugosc = 4;
+            dlugoscSekwencji = 4;
             szansa = 30;
             iloscSkrzyni = 0;
             iloscPunktow = 0;
@@ -62,8 +62,24 @@ namespace wytrych1
             Console.WriteLine("Instrukcja");
         }
 
-
-
+        public void UstawPoziomLatwy()
+        {
+            iloscWytrychow = 20;
+            dlugoscSekwencji = 5;
+            szansa = 20;
+        }
+        public void UstawPoziomSredni()
+        {
+            iloscWytrychow = 10;
+            dlugoscSekwencji = 7;
+            szansa = 30;
+        }
+        public void UstawPoziomTrudny()
+        {
+            iloscWytrychow = 5;
+            dlugoscSekwencji = 10;
+            szansa = 40;
+        }
         public int UstawSzanseZlamaniaWytrychu(int szansa) //trzeba zmienic
         {
             switch (szansa)
@@ -85,8 +101,7 @@ namespace wytrych1
         }
         public int generujIloscPunktow(int szansa) //jakies sensowe zakresy
         {
-            Random rnd = new Random();
-
+            
             if(szansa == 10)
             {
                 int los = rnd.Next(5, 20);
@@ -110,6 +125,10 @@ namespace wytrych1
         public void Sleep()
         {   
             Thread.Sleep(1000);
+        }
+        public void Sleep(int time)
+        {
+            Thread.Sleep(time);
         }
     }
 }
