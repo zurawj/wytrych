@@ -33,7 +33,7 @@ namespace wytrych1
 
                         skrzynia.GenerowanieSekwencji(menu.dlugosc);
                         
-                        menu.iloscPunktow += Graj(menu.iloscWytrychow, menu.dlugosc, skrzynia.skrzynia, menu.iloscPunktow, menu.szansa);
+                        menu.iloscPunktow += Graj(skrzynia,menu); //graj powinno otrzymywac obiekt skrzynia i menu
                         menu.iloscSkrzyni++;
                         while (true)
                         {
@@ -44,17 +44,18 @@ namespace wytrych1
                                 Console.WriteLine("Otwórz skrzynie");
                                 skrzynia.GenerowanieSekwencji(menu.dlugosc);
 
-                                menu.iloscPunktow += Graj(menu.iloscWytrychow, menu.dlugosc, skrzynia.skrzynia, menu.iloscPunktow, menu.szansa);
+                                menu.iloscPunktow += Graj(skrzynia, menu);
                                 menu.iloscSkrzyni++;
                             }
                             else if (input == "2")
                             {
+                                Console.WriteLine("Zdobyłeś " + menu.iloscPunktow + " punktów!");
                                 break;
                             }
                             else
                             {
                                 Console.WriteLine("Nieznana komenda!");
-                                Thread.Sleep(1000);
+                                menu.Sleep();
                                 Console.Clear();
                             }
 
@@ -86,7 +87,7 @@ namespace wytrych1
                                     menu.iloscWytrychow = 20;
                                     menu.dlugosc = 5;
                                     menu.szansa = 20;
-                                    Thread.Sleep(1000);
+                                    menu.Sleep();
                                     Console.Clear();
 
                                 }
@@ -96,7 +97,7 @@ namespace wytrych1
                                     menu.iloscWytrychow = 10;
                                     menu.dlugosc = 7;
                                     menu.szansa = 30;
-                                    Thread.Sleep(1000);
+                                    menu.Sleep();
                                     Console.Clear();
                                 }
                                 else if (input == "3")
@@ -105,7 +106,7 @@ namespace wytrych1
                                     menu.iloscWytrychow = 5;
                                     menu.dlugosc = 10;
                                     menu.szansa = 40;
-                                    Thread.Sleep(1000);
+                                    menu.Sleep();
                                     Console.Clear();
 
                                 }
@@ -113,7 +114,7 @@ namespace wytrych1
                                 else
                                 {
                                     Console.WriteLine("Nieznana komenda!");
-                                    Thread.Sleep(1000);
+                                    menu.Sleep();
                                     Console.Clear();
                                 }
                             }
@@ -141,7 +142,7 @@ namespace wytrych1
                                 else
                                 {
                                     Console.WriteLine("Nieznana komenda!");
-                                    Thread.Sleep(1000);
+                                    menu.Sleep();
                                     Console.Clear();
                                 }
 
@@ -155,7 +156,7 @@ namespace wytrych1
                         else
                         {
                             Console.WriteLine("Nieznana komenda!");
-                            Thread.Sleep(1000);
+                            menu.Sleep();
                             Console.Clear();
                         }
 
@@ -170,7 +171,7 @@ namespace wytrych1
                 else
                 {
                     Console.WriteLine("Nieznana komenda!");
-                    Thread.Sleep(1000);
+                    menu.Sleep();
                     Console.Clear();
                 }
             }
@@ -182,19 +183,8 @@ namespace wytrych1
 
         
 
-        private static void GenerowanieSekwencji(char[] sekwencja)
-        {
-            Random rnd = new Random();
-            for (int i = 0; i < sekwencja.Length; i++)
-            {
-                int los = rnd.Next(0, 99);
-                if (los > 50)
-                {
-                    sekwencja[i] = 'L';
-                }
-                else sekwencja[i] = 'P';
-            }
-        }
+       
+        
         private static bool zlamanieWytrycha(int szansa)
         {
             Random rnd = new Random();
@@ -230,31 +220,31 @@ namespace wytrych1
 
 
         }
-        private static int Graj(int iloscWytrychow, int dlugosc, char[] sekwencja,int iloscPunktow, int szansa)
+        private static int Graj(Skrzynia skrzynia, Menu menu)
         {
             
             int counter = 0;
-            while (counter < dlugosc)
+            while (counter < skrzynia.skrzynia.Length)
             {
                 String input = Console.ReadLine();
                 if (input.Length == 1)
                 {
                     char znak = char.Parse(input);
-                    if ((znak == sekwencja[counter]) && (znak == 'L' || znak == 'P'))
+                    if ((znak == skrzynia.skrzynia[counter]) && (znak == 'L' || znak == 'P'))
                     {
                         Console.WriteLine("OK");
                         counter++;
-                        iloscPunktow=generujIloscPunktow(szansa);
+                        menu.iloscPunktow=generujIloscPunktow(menu.szansa);
 
                     }
-                    else if ((znak != sekwencja[counter]) && (znak == 'L' || znak == 'P'))
+                    else if ((znak != skrzynia.skrzynia[counter]) && (znak == 'L' || znak == 'P'))
                     {
-                        if (zlamanieWytrycha(szansa))
+                        if (zlamanieWytrycha(menu.szansa))
                         {
                             Console.WriteLine("Zlamany wytrych! Zaczynasz od nowa.");
-                            iloscWytrychow--;
+                            menu.iloscWytrychow--;
                             counter = 0;
-                            if (iloscWytrychow == 0)
+                            if (menu.iloscWytrychow == 0)
                             {
                                 Console.WriteLine("Nie masz więcej wytrychów! Koniec Gry!");
                                 break;
@@ -271,28 +261,28 @@ namespace wytrych1
                     else if (znak == '0')
                     {
                         Console.WriteLine("Koniec gry!");
-                        Thread.Sleep(1000);
+                        menu.Sleep();
                         Console.Clear();
                         break;
                     }
                     else
                     {
                         Console.WriteLine("Nieznana komenda!");
-                        Thread.Sleep(1000);
+                        menu.Sleep();
                         Console.Clear();
                     }
                 }
                 else 
                 {
                     Console.WriteLine("Nieznana komenda!");
-                    Thread.Sleep(1000);
+                    menu.Sleep();
                     Console.Clear();
                 }
                 
 
             }
-            Console.WriteLine("Otwarto skrzynię! Zdobywasz "+iloscPunktow+" punktów!");
-            return iloscPunktow;
+            Console.WriteLine("Otwarto skrzynię! Zdobywasz "+menu.iloscPunktow+" punktów!");
+            return menu.iloscPunktow;
         }
     }
 }

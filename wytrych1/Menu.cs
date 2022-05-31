@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace wytrych1
@@ -104,6 +105,10 @@ namespace wytrych1
             else return 0;
             
 
+        }
+        public void Sleep()
+        {   
+            Thread.Sleep(1000);
         }
     }
 }
