@@ -25,16 +25,16 @@ namespace wytrych1
                 
                 if (input == "1")
                 {
-                    Skrzynia skrzynia = new Skrzynia(menu.dlugoscSekwencji);
+                    Skrzynia skrzynia = new Skrzynia(menu.DlugoscSekwencji);
                     while (true)
                     {
                         Console.WriteLine("Otwórz skrzynie");
                         
 
-                        skrzynia.GenerowanieSekwencji(menu.dlugoscSekwencji);
+                        skrzynia.GenerowanieSekwencji(menu.DlugoscSekwencji);
                         
-                        menu.iloscPunktow += Graj(skrzynia,menu); 
-                        menu.iloscSkrzyni++;
+                        menu.IloscPunktow += Graj(skrzynia,menu); 
+                        menu.IloscSkrzyni++;
                         while (true)
                         {
                             Console.WriteLine("Grasz dalej?\n1.Tak\n2.Nie");
@@ -42,14 +42,14 @@ namespace wytrych1
                             if (input == "1")
                             {
                                 Console.WriteLine("Otwórz skrzynie");
-                                skrzynia.GenerowanieSekwencji(menu.dlugoscSekwencji);
+                                skrzynia.GenerowanieSekwencji(menu.DlugoscSekwencji);
 
-                                menu.iloscPunktow += Graj(skrzynia, menu);
-                                menu.iloscSkrzyni++;
+                                menu.IloscPunktow += Graj(skrzynia, menu);
+                                menu.IloscSkrzyni++;
                             }
                             else if (input == "2")
                             {
-                                Console.WriteLine("Zdobyłeś " + menu.iloscPunktow + " punktów!");
+                                Console.WriteLine("Zdobyłeś " + menu.IloscPunktow + " punktów!");
                                 break;
                             }
                             else
@@ -85,7 +85,7 @@ namespace wytrych1
                                 {
                                     Console.WriteLine("Ustawiono poziom łatwy");
                                     menu.UstawPoziomLatwy();
-                                    Console.WriteLine("Ilosc wytrychów: " + menu.iloscWytrychow + "\nDługość sekwencji: " + menu.dlugoscSekwencji);
+                                    Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
                                     menu.Sleep(2000);
                                     Console.Clear();
 
@@ -94,7 +94,7 @@ namespace wytrych1
                                 {
                                     Console.WriteLine("Ustawiono poziom średni");
                                     menu.UstawPoziomSredni();
-                                    Console.WriteLine("Ilosc wytrychów: " + menu.iloscWytrychow + "\nDługość sekwencji: " + menu.dlugoscSekwencji);
+                                    Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
                                     menu.Sleep(2000);
                                     Console.Clear();
                                 }
@@ -102,8 +102,8 @@ namespace wytrych1
                                 {
                                     Console.WriteLine("Ustawiono poziom trudny");
                                     menu.UstawPoziomTrudny();
-
-                                    menu.Sleep();
+                                    Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
+                                    menu.Sleep(2000);
                                     Console.Clear();
 
                                 }
@@ -194,21 +194,21 @@ namespace wytrych1
                 if (input.Length == 1)
                 {
                     char znak = char.Parse(input);
-                    if ((znak == skrzynia.skrzynia[counter]) && (znak == 'L' || znak == 'P'))
+                    if ((znak == skrzynia.skrzynia[counter]) && (znak == 'L' || znak == 'P')) //ustawic L i P na const, dodac regex?
                     {
                         Console.WriteLine("OK");
                         counter++;
-                        menu.iloscPunktow=menu.generujIloscPunktow(menu.szansa);
+                        menu.IloscPunktow=menu.GenerujIloscPunktow(menu.Szansa);
 
                     }
                     else if ((znak != skrzynia.skrzynia[counter]) && (znak == 'L' || znak == 'P'))
                     {
-                        if (skrzynia.zlamanieWytrycha(menu.szansa))
+                        if (skrzynia.zlamanieWytrycha(menu.Szansa))
                         {
                             Console.WriteLine("Zlamany wytrych! Zaczynasz od nowa.");
-                            menu.iloscWytrychow--;
+                            menu.IloscWytrychow--;
                             counter = 0;
-                            if (menu.iloscWytrychow == 0)
+                            if (menu.IloscWytrychow == 0)
                             {
                                 Console.WriteLine("Nie masz więcej wytrychów! Koniec Gry!");
                                 break;
@@ -245,8 +245,8 @@ namespace wytrych1
                 
 
             }
-            Console.WriteLine("Otwarto skrzynię! Zdobywasz "+menu.iloscPunktow+" punktów!");
-            return menu.iloscPunktow;
+            Console.WriteLine("Otwarto skrzynię! Zdobywasz "+menu.IloscPunktow+" punktów!");
+            return menu.IloscPunktow;
         }
     }
 }

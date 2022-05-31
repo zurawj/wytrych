@@ -9,21 +9,21 @@ namespace wytrych1
 {
     internal class Menu
     {
-        public int iloscWytrychow { get; set; }
-        public int szansa { get; set; }
-        public int dlugoscSekwencji { get; set; }
+        public int IloscWytrychow { get; set; }
+        public int Szansa { get; set; }
+        public int DlugoscSekwencji { get; set; }
 
-        public int iloscSkrzyni { get; set; }
+        public int IloscSkrzyni { get; set; }
 
-        public int iloscPunktow { get; set; }
+        public int IloscPunktow { get; set; }
         Random rnd = new Random();
         public Menu()
         {   //domyslny poziom latwy
-            iloscWytrychow = 10;
-            dlugoscSekwencji = 4;
-            szansa = 30;
-            iloscSkrzyni = 0;
-            iloscPunktow = 0;
+            IloscWytrychow = 10;
+            DlugoscSekwencji = 4;
+            Szansa = 30;
+            IloscSkrzyni = 0;
+            IloscPunktow = 0;
         }
         public void WyswietlMenu()
         {
@@ -64,21 +64,21 @@ namespace wytrych1
 
         public void UstawPoziomLatwy()
         {
-            iloscWytrychow = 20;
-            dlugoscSekwencji = 5;
-            szansa = 20;
+            IloscWytrychow = 20;
+            DlugoscSekwencji = 5;
+            Szansa = 20;
         }
         public void UstawPoziomSredni()
         {
-            iloscWytrychow = 10;
-            dlugoscSekwencji = 7;
-            szansa = 30;
+            IloscWytrychow = 10;
+            DlugoscSekwencji = 7;
+            Szansa = 30;
         }
         public void UstawPoziomTrudny()
         {
-            iloscWytrychow = 5;
-            dlugoscSekwencji = 10;
-            szansa = 40;
+            IloscWytrychow = 5;
+            DlugoscSekwencji = 10;
+            Szansa = 40;
         }
         public int UstawSzanseZlamaniaWytrychu(int szansa) //trzeba zmienic
         {
@@ -99,7 +99,7 @@ namespace wytrych1
 
             }
         }
-        public int generujIloscPunktow(int szansa) //jakies sensowe zakresy
+        public int GenerujIloscPunktow(int szansa) //jakies sensowe zakresy
         {
             
             if(szansa == 10)
