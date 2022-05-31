@@ -16,7 +16,7 @@ namespace wytrych1
         public int iloscSkrzyni { get; set; }
 
         public int iloscPunktow { get; set; }
-
+        Random rnd = new Random();
         public Menu()
         {   //domyslny poziom latwy
             iloscWytrychow = 10;

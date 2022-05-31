@@ -185,18 +185,7 @@ namespace wytrych1
 
        
         
-        private static bool zlamanieWytrycha(int szansa)
-        {
-            Random rnd = new Random();
 
-            int los = rnd.Next(0, 99);
-            if (los > szansa)
-            {
-                return false;
-            }
-            else return true;
-
-        }
 
         private static int Graj(Skrzynia skrzynia, Menu menu)
         {
@@ -217,7 +206,7 @@ namespace wytrych1
                     }
                     else if ((znak != skrzynia.skrzynia[counter]) && (znak == 'L' || znak == 'P'))
                     {
-                        if (zlamanieWytrycha(menu.szansa))
+                        if (skrzynia.zlamanieWytrycha(menu.szansa))
                         {
                             Console.WriteLine("Zlamany wytrych! Zaczynasz od nowa.");
                             menu.iloscWytrychow--;
