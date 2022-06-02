@@ -37,7 +37,7 @@ namespace wytrych1
         public void WyswietlOpcje()
         {
             Console.WriteLine("1. Ustaw poziom trudnosci");
-            Console.WriteLine("2. Ustaw dzwiek przy zlamaniu wytrycha");
+            Console.WriteLine("2. Ustaw szanse zlamania wytrycha");
             Console.WriteLine("0. Cofnij");
         }
         public void WyswietlUstawieniaPoziomuTrudnosci()
@@ -61,7 +61,7 @@ namespace wytrych1
 
         public void WyswietlInstrukcje()
         {
-            Console.WriteLine("Instrukcja");
+            Console.WriteLine("INSTRUKCJA");
         }
 
         public void UstawPoziomLatwy()

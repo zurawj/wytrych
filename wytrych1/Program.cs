@@ -19,12 +19,11 @@ namespace wytrych1
 
                 menu.WyswietlMenu();
                 String input = Console.ReadLine();
-                              
-
                 Console.Clear();
                 
                 if (input == "1")
                 {
+                    Gra gra = new Gra();
                     Skrzynia skrzynia = new Skrzynia(menu.DlugoscSekwencji);
                     while (true)
                     {
@@ -33,7 +32,7 @@ namespace wytrych1
 
                         skrzynia.GenerowanieSekwencji(menu.DlugoscSekwencji);
                         
-                        menu.IloscPunktow += Graj(skrzynia,menu); 
+                        menu.IloscPunktow += gra.Graj(skrzynia,menu); 
                         menu.IloscSkrzyni++;
                         while (true)
                         {
@@ -158,7 +157,7 @@ namespace wytrych1
 
 
                         }
-
+                       
                         else if (input == "0") break;
                         else
                         {
@@ -172,7 +171,15 @@ namespace wytrych1
 
                     }
                 }
-            
+                else if (input == "3")
+                {
+
+                    menu.WyswietlInstrukcje();
+                    Console.WriteLine("Nacisnij dowlny przycisk aby wrócić");
+                    Console.ReadKey();
+                    Console.Clear();
+
+                }
 
                 else if (input == "0") break;
                 else
