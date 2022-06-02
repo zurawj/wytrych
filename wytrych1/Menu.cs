@@ -31,7 +31,6 @@ namespace wytrych1
             Console.WriteLine("1. Nowa gra");
             Console.WriteLine("2. Opcje");
             Console.WriteLine("3. Instrukcja");
-            Console.WriteLine("4. Zakończ grę");
             Console.WriteLine("0. Wyjdź");
         }
         public void WyswietlOpcje()
@@ -62,6 +61,8 @@ namespace wytrych1
         public void WyswietlInstrukcje()
         {
             Console.WriteLine("INSTRUKCJA");
+            Console.WriteLine("Gra polega na otwieraniu zamków w skrzyniach." + "\nAby przekręcić wytrych w lewo należy wpisać L i nacisnąć ENTER, aby przekręcić wytrych w prawo należy wpisać P i wcisnąć ENTER"+
+                "\nZa każdą otwartą skrzynię gracz otrzymuje punkty. Ilość punktów zależna jest od poziomu trudności.");
         }
 
         public void UstawPoziomLatwy()
