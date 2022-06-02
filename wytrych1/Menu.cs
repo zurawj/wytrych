@@ -16,7 +16,8 @@ namespace wytrych1
         public int IloscSkrzyni { get; set; }
 
         public int IloscPunktow { get; set; }
-        Random rnd = new Random();
+
+        private Random rnd = new Random();
         public Menu()
         {   //domyslny poziom latwy
             IloscWytrychow = 10;
@@ -49,11 +50,12 @@ namespace wytrych1
 
         }
 
-        public void WyswietlUstawieniaDzwieku()
+        public void WyswietlUstawieniaWytrycha()
         {
-            Console.WriteLine("Ustawienia dźwięku");
-            Console.WriteLine("1. Włącz dźwięk przy złamaniu wytrycha");
-            Console.WriteLine("2. Wyłącz dźwięk przy złamaniu wytrycha");
+            Console.WriteLine("Ustawienia szansy złamania wytrycha");
+            Console.WriteLine("1. Mała szansa złamania wytrycha");
+            Console.WriteLine("2. Średnia szansa złamania wytrycha");
+            Console.WriteLine("2. Duża szansa złamania wytrycha");
             Console.WriteLine("0. Cofnij");
         }
 
@@ -65,7 +67,7 @@ namespace wytrych1
         public void UstawPoziomLatwy()
         {
             IloscWytrychow = 20;
-            DlugoscSekwencji = 5;
+            DlugoscSekwencji = 4;
             Szansa = 20;
         }
         public void UstawPoziomSredni()
@@ -80,31 +82,13 @@ namespace wytrych1
             DlugoscSekwencji = 10;
             Szansa = 40;
         }
-        public int UstawSzanseZlamaniaWytrychu(int szansa) //trzeba zmienic
-        {
-            switch (szansa)
-            {
-                case 1:
-                    return 10;
-                    
-                case 2:
-                    return 20;
-                  
-                case 3:
-                    return 30;
-                  
-                default:
-                    return 20;
-              
 
-            }
-        }
-        public int GenerujIloscPunktow(int szansa) //jakies sensowe zakresy
+        public int GenerujIloscPunktow(int szansa) 
         {
             
             if(szansa == 10)
             {
-                int los = rnd.Next(5, 20);
+                int los = rnd.Next(5, 20); //przydziela od 5 do 20 punktów
                 return los;
             }
             else if(szansa == 20)
@@ -122,13 +106,15 @@ namespace wytrych1
 
         }
 
-        public void Sleep()
+        public void SleepAndClearConsole()
         {   
             Thread.Sleep(1000);
+            Console.Clear();
         }
-        public void Sleep(int time)
+        public void SleepAndClearConsole(int time)
         {
             Thread.Sleep(time);
+            Console.Clear();
         }
     }
 }

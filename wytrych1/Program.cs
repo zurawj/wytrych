@@ -49,14 +49,14 @@ namespace wytrych1
                             }
                             else if (input == "2")
                             {
-                                Console.WriteLine("Zdobyłeś " + menu.IloscPunktow + " punktów!");
+                                Console.WriteLine("Zdobywasz " + menu.IloscPunktow + " punktów!\nIlość otwartych skrzyni: "+menu.IloscSkrzyni);
                                 break;
                             }
                             else
                             {
                                 Console.WriteLine("Nieznana komenda!");
-                                menu.Sleep();
-                                Console.Clear();
+                                menu.SleepAndClearConsole();
+                                
                             }
 
                         }
@@ -86,8 +86,8 @@ namespace wytrych1
                                     Console.WriteLine("Ustawiono poziom łatwy");
                                     menu.UstawPoziomLatwy();
                                     Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
-                                    menu.Sleep(2000);
-                                    Console.Clear();
+                                    menu.SleepAndClearConsole(2000);
+                                    
 
                                 }
                                 else if (input == "2")
@@ -95,24 +95,24 @@ namespace wytrych1
                                     Console.WriteLine("Ustawiono poziom średni");
                                     menu.UstawPoziomSredni();
                                     Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
-                                    menu.Sleep(2000);
-                                    Console.Clear();
+                                    menu.SleepAndClearConsole(2000);
+                                    
                                 }
                                 else if (input == "3")
                                 {
                                     Console.WriteLine("Ustawiono poziom trudny");
                                     menu.UstawPoziomTrudny();
                                     Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
-                                    menu.Sleep(2000);
-                                    Console.Clear();
+                                    menu.SleepAndClearConsole(2000);
+                                    
 
                                 }
                                 else if (input == "0") break;
                                 else
                                 {
                                     Console.WriteLine("Nieznana komenda!");
-                                    menu.Sleep();
-                                    Console.Clear();
+                                    menu.SleepAndClearConsole();
+                                    
                                 }
                             }
 
@@ -121,7 +121,7 @@ namespace wytrych1
                         {
                             while (true)
                             {
-                                menu.WyswietlUstawieniaDzwieku();
+                                menu.WyswietlUstawieniaWytrycha();
                                 input = Console.ReadLine();
                                 
                                 Console.Clear();
@@ -129,18 +129,28 @@ namespace wytrych1
 
                                 if (input == "1")
                                 {
-                                    Console.WriteLine("Włączono dźwiek przy złamaniu wytrycha");
+                                    Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
+                                    menu.SleepAndClearConsole();
+                                    
                                 }
                                 else if (input == "2")
                                 {
-                                    Console.WriteLine("Wyłączono dźwiek przy złamaniu wytrycha");
+                                    Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
+                                    menu.SleepAndClearConsole();
+                                    
                                 }
-                                else if (input == "3") break;
+                                else if (input == "3")
+                                {
+                                    Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
+                                    menu.SleepAndClearConsole();
+                                    
+                                }
+                                else if (input == "0") break;
                                 else
                                 {
                                     Console.WriteLine("Nieznana komenda!");
-                                    menu.Sleep();
-                                    Console.Clear();
+                                    menu.SleepAndClearConsole();
+                                    
                                 }
 
 
@@ -153,8 +163,8 @@ namespace wytrych1
                         else
                         {
                             Console.WriteLine("Nieznana komenda!");
-                            menu.Sleep();
-                            Console.Clear();
+                            menu.SleepAndClearConsole();
+                            
                         }
 
 
@@ -168,8 +178,8 @@ namespace wytrych1
                 else
                 {
                     Console.WriteLine("Nieznana komenda!");
-                    menu.Sleep();
-                    Console.Clear();
+                    menu.SleepAndClearConsole();
+                    
                 }
             }
 
@@ -225,22 +235,22 @@ namespace wytrych1
                     else if (znak == '0')
                     {
                         Console.WriteLine("Koniec gry!");
-                        menu.Sleep();
-                        Console.Clear();
+                        menu.SleepAndClearConsole();
+                        
                         break;
                     }
                     else
                     {
                         Console.WriteLine("Nieznana komenda!");
-                        menu.Sleep();
-                        Console.Clear();
+                        menu.SleepAndClearConsole();
+                        
                     }
                 }
                 else 
                 {
                     Console.WriteLine("Nieznana komenda!");
-                    menu.Sleep();
-                    Console.Clear();
+                    menu.SleepAndClearConsole();
+                    
                 }
                 
 
