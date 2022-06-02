@@ -27,6 +27,7 @@ namespace wytrych1
                     Skrzynia skrzynia = new Skrzynia(menu.DlugoscSekwencji);
                     while (true)
                     {
+                        Console.Clear();
                         Console.WriteLine("Otwórz skrzynie");
                         
 
@@ -36,10 +37,12 @@ namespace wytrych1
                         menu.IloscSkrzyni++;
                         while (true)
                         {
+                            
                             Console.WriteLine("Grasz dalej?\n1.Tak\n2.Nie");
                             input = Console.ReadLine();
                             if (input == "1")
                             {
+                                Console.Clear();
                                 Console.WriteLine("Otwórz skrzynie");
                                 skrzynia.GenerowanieSekwencji(menu.DlugoscSekwencji);
 
@@ -48,6 +51,7 @@ namespace wytrych1
                             }
                             else if (input == "2")
                             {
+                                Console.Clear();
                                 Console.WriteLine("Zdobywasz " + menu.IloscPunktow + " punktów!\nIlość otwartych skrzyni: "+menu.IloscSkrzyni);
                                 break;
                             }

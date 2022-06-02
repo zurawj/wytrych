@@ -10,6 +10,7 @@ namespace wytrych1
     {
         const char L = 'L';
         const char P = 'P';
+        private bool fail = false;
         public Gra()
         {
 
@@ -41,6 +42,7 @@ namespace wytrych1
                             if (menu.IloscWytrychow == 0)
                             {
                                 Console.WriteLine("Nie masz więcej wytrychów! Koniec Gry!");
+                                fail = true;
                                 break;
                             }
                         }
@@ -54,8 +56,7 @@ namespace wytrych1
 
                     else if (znak == '0')
                     {
-                        Console.WriteLine("Koniec gry!");
-                        menu.SleepAndClearConsole();
+                        fail = true;
 
                         break;
                     }
@@ -75,8 +76,20 @@ namespace wytrych1
 
 
             }
-            Console.WriteLine("Otwarto skrzynię! Zdobywasz " + menu.IloscPunktow + " punktów!");
-            return menu.IloscPunktow;
+            if (fail)
+            {
+                Console.Clear();
+                Console.WriteLine("Koniec gry! Zdobywasz " + menu.IloscPunktow + " punktów!");
+                return menu.IloscPunktow;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Otwarto skrzynię! Zdobywasz " + menu.IloscPunktow + " punktów!");
+                return menu.IloscPunktow;
+
+            }
+
         }
 
     }
