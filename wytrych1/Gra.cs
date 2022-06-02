@@ -11,6 +11,7 @@ namespace wytrych1
         const char L = 'L';
         const char P = 'P';
         private bool fail = false;
+        public bool OtwartoSkrzynie = false;
         public Gra()
         {
 
@@ -86,6 +87,7 @@ namespace wytrych1
             {
                 Console.Clear();
                 Console.WriteLine("Otwarto skrzynię! Zdobywasz " + menu.IloscPunktow + " punktów!");
+                OtwartoSkrzynie = true;
                 return menu.IloscPunktow;
 
             }

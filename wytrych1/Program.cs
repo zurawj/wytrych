@@ -34,7 +34,10 @@ namespace wytrych1
                         skrzynia.GenerowanieSekwencji(menu.DlugoscSekwencji);
                         
                         menu.IloscPunktow += gra.Graj(skrzynia,menu); 
-                        menu.IloscSkrzyni++;
+                        if(gra.OtwartoSkrzynie)
+                        {
+                            menu.IloscSkrzyni++;
+                        } 
                         while (true)
                         {
                             
@@ -46,8 +49,11 @@ namespace wytrych1
                                 Console.WriteLine("Otwórz skrzynie");
                                 skrzynia.GenerowanieSekwencji(menu.DlugoscSekwencji);
 
-                                menu.IloscPunktow += Graj(skrzynia, menu);
-                                menu.IloscSkrzyni++;
+                                menu.IloscPunktow += gra.Graj(skrzynia, menu);
+                                if (gra.OtwartoSkrzynie)
+                                {
+                                    menu.IloscSkrzyni++;
+                                }
                             }
                             else if (input == "2")
                             {
@@ -169,9 +175,6 @@ namespace wytrych1
                             menu.SleepAndClearConsole();
                             
                         }
-
-
-
 
                     }
                 }
