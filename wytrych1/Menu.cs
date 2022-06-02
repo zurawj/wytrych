@@ -19,7 +19,7 @@ namespace wytrych1
 
         private Random rnd = new Random();
         public Menu()
-        {   //domyslny poziom latwy
+        {   //domyslny poziom sredni
             IloscWytrychow = 10;
             DlugoscSekwencji = 4;
             Szansa = 30;
@@ -54,7 +54,7 @@ namespace wytrych1
             Console.WriteLine("Ustawienia szansy złamania wytrycha");
             Console.WriteLine("1. Mała szansa złamania wytrycha");
             Console.WriteLine("2. Średnia szansa złamania wytrycha");
-            Console.WriteLine("2. Duża szansa złamania wytrycha");
+            Console.WriteLine("3. Duża szansa złamania wytrycha");
             Console.WriteLine("0. Cofnij");
         }
 
@@ -81,7 +81,7 @@ namespace wytrych1
         {
             IloscWytrychow = 5;
             DlugoscSekwencji = 10;
-            Szansa = 40;
+            Szansa = 50;
         }
 
         public int GenerujIloscPunktow(int szansa) 

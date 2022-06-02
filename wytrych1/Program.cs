@@ -142,18 +142,21 @@ namespace wytrych1
 
                                 if (input == "1")
                                 {
+                                    menu.Szansa = 20;
                                     Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
                                     menu.SleepAndClearConsole();
                                     
                                 }
                                 else if (input == "2")
                                 {
+                                    menu.Szansa = 30;
                                     Console.WriteLine("Ustawiono średnią szanse złamania wytrycha");
                                     menu.SleepAndClearConsole();
                                     
                                 }
                                 else if (input == "3")
                                 {
+                                    menu.Szansa = 50;
                                     Console.WriteLine("Ustawiono dużą szanse złamania wytrycha");
                                     menu.SleepAndClearConsole();
                                     
