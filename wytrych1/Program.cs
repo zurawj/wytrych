@@ -12,15 +12,13 @@ namespace wytrych1
         static void Main(string[] args)
         {
             Menu menu = new Menu();
-            
            
             while (true)
             {
-
                 menu.WyswietlMenu();
                 String input = Console.ReadLine();
                 Console.Clear();
-                
+                Skrzynia skrzynia = new Skrzynia(menu.DlugoscSekwencji);
                 if (input == "1")
                 {
                     Gra gra = new Gra();
@@ -31,14 +29,13 @@ namespace wytrych1
                         Console.Clear();
                         Console.WriteLine("Otwórz skrzynie");
 
-                        Skrzynia skrzynia = new Skrzynia(menu.DlugoscSekwencji);
+                        
                         skrzynia.GenerowanieSekwencji(menu.DlugoscSekwencji);
                         
                         menu.IloscPunktow += gra.Graj(skrzynia,menu); 
                         if(gra.otwartoSkrzynie)
                         {
-                            menu.IloscSkrzyni++;
-                            
+                            menu.IloscSkrzyni++;    
                         } 
                         while (true)
                         {
@@ -55,7 +52,6 @@ namespace wytrych1
                                 if (gra.otwartoSkrzynie)
                                 {
                                     menu.IloscSkrzyni++;
-                                   
                                 }
                             }
                             else if (input == "2")
@@ -69,7 +65,6 @@ namespace wytrych1
                             {
                                 Console.WriteLine("Nieznana komenda!");
                                 menu.SleepAndClearConsole();
-                                
                             }
 
                         }
@@ -100,16 +95,13 @@ namespace wytrych1
                                     menu.UstawPoziomLatwy();
                                     Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
                                     menu.SleepAndClearConsole(2000);
-                                    
-
                                 }
                                 else if (input == "2")
                                 {
                                     Console.WriteLine("Ustawiono poziom średni");
                                     menu.UstawPoziomSredni();
                                     Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
-                                    menu.SleepAndClearConsole(2000);
-                                    
+                                    menu.SleepAndClearConsole(2000);  
                                 }
                                 else if (input == "3")
                                 {
@@ -117,15 +109,12 @@ namespace wytrych1
                                     menu.UstawPoziomTrudny();
                                     Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
                                     menu.SleepAndClearConsole(2000);
-                                    
-
                                 }
                                 else if (input == "0") break;
                                 else
                                 {
                                     Console.WriteLine("Nieznana komenda!");
                                     menu.SleepAndClearConsole();
-                                    
                                 }
                             }
 
@@ -140,23 +129,23 @@ namespace wytrych1
                                 Console.Clear();
 
 
-                                if (input == "1")
+                                 if (input == "1")
                                 {
-                                    menu.Szansa = 20;
+                                    menu.Szansa = menu.SzansaLatwy;
                                     Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
                                     menu.SleepAndClearConsole();
                                     
                                 }
                                 else if (input == "2")
                                 {
-                                    menu.Szansa = 30;
+                                    menu.Szansa = menu.SzansaSredni;
                                     Console.WriteLine("Ustawiono średnią szanse złamania wytrycha");
                                     menu.SleepAndClearConsole();
                                     
                                 }
                                 else if (input == "3")
                                 {
-                                    menu.Szansa = 50;
+                                    menu.Szansa = menu.SzansaTrudny;
                                     Console.WriteLine("Ustawiono dużą szanse złamania wytrycha");
                                     menu.SleepAndClearConsole();
                                     

@@ -24,7 +24,7 @@ namespace wytrych1
                 if (input.Length == 1)
                 {
                     char znak = char.Parse(input);
-                    if ((znak == skrzynia.skrzynia[counter]) && (znak == L || znak == P)) //dodac regex?
+                    if ((znak == skrzynia.skrzynia[counter]) && (znak == L || znak == P)) 
                     {
                         Console.WriteLine("OK");
                         counter++;
@@ -41,6 +41,7 @@ namespace wytrych1
                             if (menu.IloscWytrychow == 0)
                             {
                                 Console.WriteLine("Nie masz więcej wytrychów! Koniec Gry!");
+                                menu.IloscPunktow = 0;
                                 fail = true;
                                 break;
                             }

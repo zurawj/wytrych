@@ -17,14 +17,16 @@ namespace wytrych1
 
         public int IloscPunktow { get; set; }
 
+        public int SzansaLatwy = 20;
+        public int SzansaSredni = 30;
+        public int SzansaTrudny = 80;
+
         private Random rnd = new Random();
         public Menu()
-        {   //domyslny poziom sredni
+        {   //domyslny poziom latwy
             IloscWytrychow = 10;
             DlugoscSekwencji = 4;
-            Szansa = 30;
-            IloscSkrzyni = 0;
-            IloscPunktow = 0;
+            Szansa = 20;
         }
         public void WyswietlMenu()
         {
@@ -61,43 +63,50 @@ namespace wytrych1
         public void WyswietlInstrukcje()
         {
             Console.WriteLine("INSTRUKCJA");
-            Console.WriteLine("Gra polega na otwieraniu zamków w skrzyniach." + "\nAby przekręcić wytrych w lewo należy wpisać L i nacisnąć ENTER, aby przekręcić wytrych w prawo należy wpisać P i wcisnąć ENTER"+
-                "\nZa każdą otwartą skrzynię gracz otrzymuje punkty. Ilość punktów zależna jest od poziomu trudności.");
+            Console.WriteLine("Gra polega na otwieraniu zamków w skrzyniach.\n" +
+                "Aby rozpocząć grę wybierz 'Nowa Gra' w menu." + "\nAby przekręcić wytrych w lewo należy wpisać L i nacisnąć ENTER,\n" +
+                "aby przekręcić wytrych w prawo należy wpisać P i nacisnąć ENTER.\n" +
+                "Po przekręceniu wytrycha w złą stronę gracz zaczyna od początku sekwencji.\n" +
+                "Przy złym ruchu istnieje szansa na złamanie wytrycha.\n" +
+                "Gra kończy się gdy graczowi skończą się wytrychy, lub naciśnie '0' podczas rozgrywki.\n"+
+                "Za każdą otwartą skrzynię gracz otrzymuje punkty. Ilość przydzielonych punktów zależna jest od poziomu trudności.");
+
+            Console.WriteLine("--------------------------");
         }
 
         public void UstawPoziomLatwy()
         {
             IloscWytrychow = 20;
             DlugoscSekwencji = 4;
-            Szansa = 20;
+            Szansa = SzansaLatwy;
         }
         public void UstawPoziomSredni()
         {
             IloscWytrychow = 10;
             DlugoscSekwencji = 7;
-            Szansa = 30;
+            Szansa = SzansaSredni;
         }
         public void UstawPoziomTrudny()
         {
             IloscWytrychow = 5;
             DlugoscSekwencji = 10;
-            Szansa = 50;
+            Szansa = SzansaTrudny;
         }
 
         public int GenerujIloscPunktow(int szansa) 
         {
             
-            if(szansa == 10)
+            if(szansa == SzansaLatwy)
             {
                 int los = rnd.Next(5, 20); //przydziela od 5 do 20 punktów
                 return los;
             }
-            else if(szansa == 20)
+            else if(szansa == SzansaSredni)
             {
                 int los = rnd.Next(15, 30);
                 return los;
             }
-            else if(szansa == 30)
+            else if(szansa == SzansaTrudny)
             {
                 int los = rnd.Next(25, 40);
                 return los;
