@@ -1,49 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace wytrych1
-{   
+{
     public class Skrzynia
     {
         private const char L = 'L';
         private const char P = 'P';
-        public char[] skrzynia { get; set; }
-        Random rnd = new Random();
+        private const int Min = 0;
+        private const int Max = 99;
 
-        public Skrzynia(int dlugosc)
+        public char[] SkrzyniaArray { get; set; }
+        private Random Rnd = new Random();
+
+        public Skrzynia(Menu menu)
         {
-            this.skrzynia = new char[dlugosc];
+            this.SkrzyniaArray = new char[menu.DlugoscSekwencji];
         }
-        public void GenerowanieSekwencji(int dlugosc)
+        public void GenerowanieSekwencji(Menu menu)
         {
             
-            for (int i = 0; i < dlugosc; i++)
-            {
-                int los = rnd.Next(0, 2);
-                if (los > 0)
+            for (int i = 0; i < menu.DlugoscSekwencji; i++)
+            {  
+                if (Rnd.Next(0, 2) > 0)
                 {
-                    this.skrzynia[i] = L;
+                    this.SkrzyniaArray[i] = L;
                 }
-                else this.skrzynia[i] = P;
+                else this.SkrzyniaArray[i] = P;
             }
         }
 
 
-        public bool zlamanieWytrycha(int szansa)
+        public bool ZlamanieWytrycha(int szansa)
         {
-
-            int los = rnd.Next(0, 99);
-            if (los > szansa)
-            {
-                return false;
-            }
-            else return true;
-
-
-
+            return (Rnd.Next(Min, Max) <= szansa);
         }
 
     }

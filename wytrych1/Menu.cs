@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace wytrych1
 {
-    internal class Menu
+    public class Menu
     {
         public int IloscWytrychow { get; set; }
         public int Szansa { get; set; }

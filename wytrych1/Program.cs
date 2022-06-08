@@ -18,7 +18,7 @@ namespace wytrych1
                 menu.WyswietlMenu();
                 String input = Console.ReadLine();
                 Console.Clear();
-                Skrzynia skrzynia = new Skrzynia(menu.DlugoscSekwencji);
+                Skrzynia skrzynia = new Skrzynia(menu);
                 if (input == "1")
                 {
                     Gra gra = new Gra();
@@ -30,7 +30,7 @@ namespace wytrych1
                         Console.WriteLine("Otwórz skrzynie");
 
                         
-                        skrzynia.GenerowanieSekwencji(menu.DlugoscSekwencji);
+                        skrzynia.GenerowanieSekwencji(menu);
                         
                         menu.IloscPunktow += gra.Graj(skrzynia,menu); 
                         if(gra.otwartoSkrzynie)
@@ -46,7 +46,7 @@ namespace wytrych1
                             {
                                 Console.Clear();
                                 Console.WriteLine("Otwórz skrzynie");
-                                skrzynia.GenerowanieSekwencji(menu.DlugoscSekwencji);
+                                skrzynia.GenerowanieSekwencji(menu);
 
                                 menu.IloscPunktow += gra.Graj(skrzynia, menu);
                                 if (gra.otwartoSkrzynie)
