@@ -17,9 +17,9 @@ namespace wytrych1
 
         public int IloscPunktow { get; set; }
 
-        public int SzansaLatwy = 20;
-        public int SzansaSredni = 30;
-        public int SzansaTrudny = 80;
+        public const int SzansaLatwy = 20;
+        public const int SzansaSredni = 30;
+        public const int SzansaTrudny = 80;
 
         private Random rnd = new Random();
         public Menu()
@@ -29,35 +29,30 @@ namespace wytrych1
             Szansa = 20;
         }
         public void WyswietlMenu()
-        {
-            Console.WriteLine("1. Nowa gra");
-            Console.WriteLine("2. Opcje");
-            Console.WriteLine("3. Instrukcja");
-            Console.WriteLine("0. Wyjdź");
+        {   
+            string[] listaOpcji = { "1. Nowa gra", "2. Opcje", "3. Instrukcja", "0. Wyjdz" };
+            List<string> MenuOpcje = new List<string>(listaOpcji);
+            WyswietlListeOpcji(MenuOpcje);
         }
         public void WyswietlOpcje()
         {
-            Console.WriteLine("1. Ustaw poziom trudnosci");
-            Console.WriteLine("2. Ustaw szanse zlamania wytrycha");
-            Console.WriteLine("0. Cofnij");
+            string[] listaOpcji = { "1. Ustaw poziom trudnosci", "2. Ustaw szanse zlamania wytrycha", "0. Cofnij" };
+            List<string> MenuOpcje = new List<string>(listaOpcji);
+            WyswietlListeOpcji(MenuOpcje);
         }
         public void WyswietlUstawieniaPoziomuTrudnosci()
-        {   
-            Console.WriteLine("Wybierz poziom trudności:");
-            Console.WriteLine("1. Łatwy");
-            Console.WriteLine("2. Średni");
-            Console.WriteLine("3. Trudny");
-            Console.WriteLine("0. Cofnij");
-
+        {
+            string[] listaOpcji = { "Wybierz poziom trudności:", "1. Łatwy", "2. Średni", "3. Trudny" , "0. Cofnij" };
+            List<string> MenuOpcje = new List<string>(listaOpcji);
+            WyswietlListeOpcji(MenuOpcje);
         }
 
         public void WyswietlUstawieniaWytrycha()
         {
-            Console.WriteLine("Ustawienia szansy złamania wytrycha");
-            Console.WriteLine("1. Mała szansa złamania wytrycha");
-            Console.WriteLine("2. Średnia szansa złamania wytrycha");
-            Console.WriteLine("3. Duża szansa złamania wytrycha");
-            Console.WriteLine("0. Cofnij");
+            string[] listaOpcji = { "Ustawienia szansy złamania wytrycha", "1. Mała szansa złamania wytrycha", "2. Średnia szansa złamania wytrycha",
+                "3. Duża szansa złamania wytrycha", "0. Cofnij" };
+            List<string> MenuOpcje = new List<string>(listaOpcji);
+            WyswietlListeOpcji(MenuOpcje);
         }
 
         public void WyswietlInstrukcje()
@@ -73,26 +68,34 @@ namespace wytrych1
 
             Console.WriteLine("--------------------------");
         }
+        public void WyswietlListeOpcji(List<string> lista)
+        {
+
+            foreach(string l in lista)
+            {
+                Console.WriteLine(l);
+            }
+            
+        }
 
         public void UstawPoziomLatwy()
         {
-            IloscWytrychow = 20;
-            DlugoscSekwencji = 4;
-            Szansa = SzansaLatwy;
+            UstawPoziom(20, 4, SzansaLatwy);
         }
         public void UstawPoziomSredni()
         {
-            IloscWytrychow = 10;
-            DlugoscSekwencji = 7;
-            Szansa = SzansaSredni;
+            UstawPoziom(10, 7, SzansaSredni);
         }
         public void UstawPoziomTrudny()
         {
-            IloscWytrychow = 5;
-            DlugoscSekwencji = 10;
-            Szansa = SzansaTrudny;
+            UstawPoziom(5, 10, SzansaTrudny);
         }
-
+        private void UstawPoziom(int IloscWytrychow, int DlugoscSekwencji, int Szansa)
+        {
+            this.IloscWytrychow = IloscWytrychow;
+            this.DlugoscSekwencji = DlugoscSekwencji;
+            this.Szansa = Szansa;
+        }
         public int GenerujIloscPunktow(int szansa) 
         {
             
