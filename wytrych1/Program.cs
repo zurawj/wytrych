@@ -16,6 +16,7 @@ namespace wytrych1
            
             while (true)
             {
+                //to chyba mialo byc w konstruktorze Menu()...
                 menu.iloscWytrychow = 10;
                 menu.dlugosc = 4;
                 menu.szansa = 30;
@@ -34,10 +35,12 @@ namespace wytrych1
                     while (true)
                     {
                         Console.WriteLine("Otwórz skrzynie");
+                        //do Skrzynia ja bym przekazywal po prostu obiekt Menu
                         Skrzynia skrzynia = new Skrzynia(menu.dlugosc);
 
                         skrzynia.GenerowanieSekwencji(menu.dlugosc);
-                        
+
+                        //do Gra ja bym przekazywal po prostu obiekt Menu
                         menu.iloscPunktow += Gra(menu.iloscWytrychow, menu.dlugosc, skrzynia.skrzynia, menu.iloscPunktow, menu.szansa);
                         menu.iloscSkrzyni++;
                         while (true)
@@ -46,10 +49,12 @@ namespace wytrych1
                             input = Console.ReadLine();
                             if (input == "1")
                             {
+                                //nie za duzo tych skrzyni...
                                 skrzynia = new Skrzynia(menu.dlugosc);
 
                                 skrzynia.GenerowanieSekwencji(menu.dlugosc);
 
+                                //...i gier????
                                 menu.iloscPunktow += Gra(menu.iloscWytrychow, menu.dlugosc, skrzynia.skrzynia, menu.iloscPunktow, menu.szansa);
                                 menu.iloscSkrzyni++;
                             }
@@ -71,7 +76,7 @@ namespace wytrych1
                 }
                 else if (input == "2")
                 {
-
+                    //za duzo tych while(true) - moze powino byc jedno while true i w nim inputy odczytywane....
                     while (true)
                     {
                         menu.WyswietlOpcje();
@@ -88,6 +93,7 @@ namespace wytrych1
                                 Console.Clear();
                                 if (input == "1")
                                 {
+                                    //skoro to sie powtarza to powinna to byc osoba metoda...
                                     Console.WriteLine("Ustawiono poziom łatwy");
                                     menu.iloscWytrychow = 20;
                                     menu.dlugosc = 5;

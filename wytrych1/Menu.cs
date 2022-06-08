@@ -8,6 +8,7 @@ namespace wytrych1
 {
     internal class Menu
     {
+        //propertiesy z duzych liter
         public int iloscWytrychow { get; set; }
         public int szansa { get; set; }
         public int dlugosc { get; set; }
@@ -17,6 +18,7 @@ namespace wytrych1
         public int iloscPunktow { get; set; }
         public void WyswietlMenu()
         {
+            //nie mozna jakiegos mechanizmu zrobic, ktoremu np. podajesz tablce opcji i on ja wyswietla ?? troche duzo WriteLine'ow
             Console.WriteLine("1. Nowa gra");
             Console.WriteLine("2. Opcje");
             Console.WriteLine("3. Instrukcja");
@@ -53,7 +55,7 @@ namespace wytrych1
         }
 
 
-
+        //moze jakos te return bylby wyliczany?
         public int UstawSzanseZlamaniaWytrychu(int szansa)
         {
             switch (szansa)
@@ -73,9 +75,36 @@ namespace wytrych1
 
             }
         }
+
+        //metoda = duza litera
         public int generujIloscPunktow(int szansa)
         {
             Random rnd = new Random();
+            //mniej ifow moze - i przede wszystkim mniej returnow
+            /*
+             * int min = 0;
+             * int max = 0;
+             * 
+             * if(szansa == 10)
+             * {
+             * min = 5;
+             * max = 20;
+             * }
+             * else if (...)
+             * 
+             * 
+             * 
+             * if(min != max)
+             * {
+             *  return rnd.Next(min, max);
+             * }
+             * else 
+             * {
+             *  return 0;
+             * }
+             * 
+             * 
+             * */
 
             if(szansa == 10)
             {
