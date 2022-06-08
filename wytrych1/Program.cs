@@ -91,24 +91,15 @@ namespace wytrych1
                                 Console.Clear();
                                 if (input == "1")
                                 {
-                                    Console.WriteLine("Ustawiono poziom łatwy");
                                     menu.UstawPoziomLatwy();
-                                    Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
-                                    menu.SleepAndClearConsole(2000);
                                 }
                                 else if (input == "2")
                                 {
-                                    Console.WriteLine("Ustawiono poziom średni");
-                                    menu.UstawPoziomSredni();
-                                    Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
-                                    menu.SleepAndClearConsole(2000);  
+                                    menu.UstawPoziomSredni();                                   
                                 }
                                 else if (input == "3")
                                 {
-                                    Console.WriteLine("Ustawiono poziom trudny");
                                     menu.UstawPoziomTrudny();
-                                    Console.WriteLine("Ilosc wytrychów: " + menu.IloscWytrychow + "\nDługość sekwencji: " + menu.DlugoscSekwencji);
-                                    menu.SleepAndClearConsole(2000);
                                 }
                                 else if (input == "0") break;
                                 else
@@ -131,24 +122,15 @@ namespace wytrych1
 
                                  if (input == "1")
                                 {
-                                    menu.Szansa = menu.SzansaLatwy;
-                                    Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
-                                    menu.SleepAndClearConsole();
-                                    
+                                    menu.UstawSzanseZlamaniaWytrycha(menu.SzansaLatwy);                                                                        
                                 }
                                 else if (input == "2")
                                 {
-                                    menu.Szansa = menu.SzansaSredni;
-                                    Console.WriteLine("Ustawiono średnią szanse złamania wytrycha");
-                                    menu.SleepAndClearConsole();
-                                    
+                                    menu.UstawSzanseZlamaniaWytrycha(menu.SzansaSredni);
                                 }
                                 else if (input == "3")
                                 {
-                                    menu.Szansa = menu.SzansaTrudny;
-                                    Console.WriteLine("Ustawiono dużą szanse złamania wytrycha");
-                                    menu.SleepAndClearConsole();
-                                    
+                                    menu.UstawSzanseZlamaniaWytrycha(menu.SzansaTrudny);
                                 }
                                 else if (input == "0") break;
                                 else

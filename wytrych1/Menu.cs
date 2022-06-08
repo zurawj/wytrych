@@ -18,10 +18,10 @@ namespace wytrych1
         public int IloscPunktow { get; set; }
 
         public int SzansaLatwy = 20;
-        public int SzansaSredni = 30;
+        public int SzansaSredni = 50;
         public int SzansaTrudny = 80;
 
-        private Random rnd = new Random();
+        private Random Rnd = new Random();
         public Menu()
         {   //domyslny poziom latwy
             IloscWytrychow = 10;
@@ -81,14 +81,23 @@ namespace wytrych1
         public void UstawPoziomLatwy()
         {
             UstawPoziom(20, 4, SzansaLatwy);
+            Console.WriteLine("Ustawiono poziom łatwy");
+            Console.WriteLine("Ilosc wytrychów: " + IloscWytrychow + "\nDługość sekwencji: " + DlugoscSekwencji);
+            SleepAndClearConsole(2000);
         }
         public void UstawPoziomSredni()
         {
             UstawPoziom(10, 7, SzansaSredni);
+            Console.WriteLine("Ustawiono poziom średni");
+            Console.WriteLine("Ilosc wytrychów: " + IloscWytrychow + "\nDługość sekwencji: " + DlugoscSekwencji);
+            SleepAndClearConsole(2000);
         }
         public void UstawPoziomTrudny()
         {
             UstawPoziom(5, 10, SzansaTrudny);
+            Console.WriteLine("Ustawiono poziom trudny");
+            Console.WriteLine("Ilosc wytrychów: " + IloscWytrychow + "\nDługość sekwencji: " + DlugoscSekwencji);
+            SleepAndClearConsole(2000);
         }
         private void UstawPoziom(int IloscWytrychow, int DlugoscSekwencji, int Szansa)
         {
@@ -96,7 +105,27 @@ namespace wytrych1
             this.DlugoscSekwencji = DlugoscSekwencji;
             this.Szansa = Szansa;
         }
+        public void UstawSzanseZlamaniaWytrycha(int szansa)
+        {
+            if (szansa == SzansaLatwy)
+            {
+                Szansa = SzansaLatwy;
+                Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
+            }
+            else if (szansa == SzansaTrudny)
+            {
+                Szansa = SzansaTrudny;
+                Console.WriteLine("Ustawiono dużą szanse złamania wytrycha");
+            }
+            else
+            {
+                Szansa = SzansaSredni;
+                Console.WriteLine("Ustawiono średnią szanse złamania wytrycha");
+            }
 
+            
+            SleepAndClearConsole();
+        }
         public int GenerujIloscPunktow(int szansa) 
         {
             int min = 0;
@@ -121,7 +150,7 @@ namespace wytrych1
             }
             if(min != max)
             {
-                return rnd.Next(min, max);
+                return Rnd.Next(min, max);
             }
             else return 0;
             
