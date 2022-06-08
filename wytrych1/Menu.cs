@@ -17,9 +17,9 @@ namespace wytrych1
 
         public int IloscPunktow { get; set; }
 
-        public const int SzansaLatwy = 20;
-        public const int SzansaSredni = 30;
-        public const int SzansaTrudny = 80;
+        public int SzansaLatwy = 20;
+        public int SzansaSredni = 30;
+        public int SzansaTrudny = 80;
 
         private Random rnd = new Random();
         public Menu()
@@ -96,23 +96,32 @@ namespace wytrych1
             this.DlugoscSekwencji = DlugoscSekwencji;
             this.Szansa = Szansa;
         }
+
         public int GenerujIloscPunktow(int szansa) 
         {
-            
-            if(szansa == SzansaLatwy)
+            int min = 0;
+            int max = 0;
+
+            if (szansa == SzansaLatwy)
             {
-                int los = rnd.Next(5, 20); //przydziela od 5 do 20 punktów
-                return los;
+                min = 5;
+                max = 20;
+
             }
             else if(szansa == SzansaSredni)
             {
-                int los = rnd.Next(15, 30);
-                return los;
+                min = 15;
+                max = 30;
             }
             else if(szansa == SzansaTrudny)
             {
-                int los = rnd.Next(25, 40);
-                return los;
+                min = 25;
+                max = 40;
+                
+            }
+            if(min != max)
+            {
+                return rnd.Next(min, max);
             }
             else return 0;
             

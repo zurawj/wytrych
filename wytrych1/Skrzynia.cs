@@ -5,9 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace wytrych1
-{
+{   
     public class Skrzynia
     {
+        private const char L = 'L';
+        private const char P = 'P';
         public char[] skrzynia { get; set; }
         Random rnd = new Random();
 
@@ -23,9 +25,9 @@ namespace wytrych1
                 int los = rnd.Next(0, 2);
                 if (los > 0)
                 {
-                    this.skrzynia[i] = 'L';
+                    this.skrzynia[i] = L;
                 }
-                else this.skrzynia[i] = 'P';
+                else this.skrzynia[i] = P;
             }
         }
 
