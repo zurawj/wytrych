@@ -65,8 +65,9 @@ namespace wytrych1
                             {
                                 Console.WriteLine("Nieznana komenda!");
                                 menu.SleepAndClearConsole();
+                                continue;
                             }
-                            break;
+ 
                         }
 
 
@@ -75,10 +76,7 @@ namespace wytrych1
                             break;
                         }
 
-
-
                     }
-
                    
                 }
 
@@ -178,10 +176,6 @@ namespace wytrych1
                     menu.SleepAndClearConsole();
                 }
             }
-
-
-            
-
 
         }
         static void Clear()
