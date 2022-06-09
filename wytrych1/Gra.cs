@@ -19,11 +19,9 @@ namespace wytrych1
             otwartoSkrzynie = false;
             int counter = 0;
             while (counter < skrzynia.SkrzyniaArray.Length)
-            {
-                String input = Console.ReadLine();
-                if (input.Length == 1)
-                {
-                    char znak = char.Parse(input);
+            {   
+               char znak = ZamienNaZnak(Console.ReadKey(true));
+            
                     if ((znak == skrzynia.SkrzyniaArray[counter]) && (znak == L || znak == P)) 
                     {
                         Console.WriteLine("OK");
@@ -35,8 +33,8 @@ namespace wytrych1
                     {
                         if (skrzynia.ZlamanieWytrycha(menu.Szansa))
                         {
-                            Console.WriteLine("Zlamany wytrych! Zaczynasz od nowa.");
                             menu.IloscWytrychow--;
+                            Console.WriteLine("Zlamany wytrych! Zaczynasz od nowa. Pozostało "+menu.IloscWytrychow+" wytrychów." );
                             counter = 0;
                             if (menu.IloscWytrychow == 0)
                             {
@@ -66,13 +64,7 @@ namespace wytrych1
                         menu.SleepAndClearConsole();
 
                     }
-                }
-                else
-                {
-                    Console.WriteLine("Nieznana komenda!");
-                    menu.SleepAndClearConsole();
-
-                }
+             
 
 
             }
@@ -92,6 +84,21 @@ namespace wytrych1
             }
 
         }
-
+        private char ZamienNaZnak(ConsoleKeyInfo key)
+        {
+            if (key.Key == ConsoleKey.LeftArrow)
+            {
+                Console.WriteLine("Lewo");
+                return 'L';
+                
+            }
+            else if (key.Key == ConsoleKey.RightArrow)
+            {
+                Console.WriteLine("Prawo");
+                return 'P';
+                
+            }
+            else return '1';
+        }
     }
 }
