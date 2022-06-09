@@ -107,8 +107,9 @@ namespace wytrych1
         }
         public void UstawSzanseZlamaniaWytrycha(int szansa)
         {
+            Console.Clear();
             if (szansa == SzansaLatwy)
-            {
+            {  
                 Szansa = SzansaLatwy;
                 Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
             }
@@ -119,8 +120,10 @@ namespace wytrych1
             }
             else
             {
+                
                 Szansa = SzansaSredni;
                 Console.WriteLine("Ustawiono średnią szanse złamania wytrycha");
+               
             }
 
             

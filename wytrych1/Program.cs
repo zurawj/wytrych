@@ -17,11 +17,9 @@ namespace wytrych1
 
             while (true)
             {
+                Clear();
                 menu.WyswietlMenu();
-                // String input = Console.ReadLine();
-                //Console.Clear();
                 Skrzynia skrzynia = new Skrzynia(menu);
-                // ConsoleKey key = Console.ReadKey().Key;
                 ConsoleKeyInfo keyPressed = Console.ReadKey();
                 if (keyPressed.Key == ConsoleKey.D1)
                 {
@@ -32,7 +30,7 @@ namespace wytrych1
 
                     while (true)
                     {
-                        Console.Clear();
+                        Clear();
                         Console.WriteLine("Otwórz skrzynie");
                         skrzynia.GenerowanieSekwencji(menu);
 
@@ -45,7 +43,7 @@ namespace wytrych1
                         keyPressed = Console.ReadKey();
                         if (keyPressed.Key == ConsoleKey.D2)
                         {
-                            Console.Clear();
+                            Clear();
                             Console.WriteLine("Zdobywasz " + menu.IloscPunktow + " punktów!\nIlość otwartych skrzyni: " + menu.IloscSkrzyni);
                             menu.SleepAndClearConsole(3000);
                             break;
@@ -63,94 +61,112 @@ namespace wytrych1
 
 
                 }
+
                 else if (keyPressed.Key == ConsoleKey.D2)
                 {
-                    menu.WyswietlOpcje();
-                    keyPressed = Console.ReadKey();
-                    if(keyPressed.Key == ConsoleKey.D1)
+                    while (true)
                     {
-                        menu.WyswietlUstawieniaPoziomuTrudnosci();
+                        Clear();
+                        menu.WyswietlOpcje();
                         keyPressed = Console.ReadKey();
-                        Console.Clear();
                         if (keyPressed.Key == ConsoleKey.D1)
                         {
-                            menu.UstawPoziomLatwy();
+                            Clear();
+                            menu.WyswietlUstawieniaPoziomuTrudnosci();
+                            keyPressed = Console.ReadKey();
+                            Clear();
+                            if (keyPressed.Key == ConsoleKey.D1)
+                            {
+                                menu.UstawPoziomLatwy();
+                            }
+                            else if (keyPressed.Key == ConsoleKey.D2)
+                            {
+                                menu.UstawPoziomSredni();
+                            }
+                            else if (keyPressed.Key == ConsoleKey.D3)
+                            {
+                                menu.UstawPoziomTrudny();
+                            }
+                            else if (keyPressed.Key == ConsoleKey.D0) ; //break;
+                            else
+                            {
+                                Console.WriteLine("Nieznana komenda!");
+                                menu.SleepAndClearConsole();
+                            }
+
                         }
                         else if (keyPressed.Key == ConsoleKey.D2)
                         {
-                            menu.UstawPoziomSredni();
+                            Clear();
+                            menu.WyswietlUstawieniaWytrycha();
+                            keyPressed = Console.ReadKey();
+
+                            if (keyPressed.Key == ConsoleKey.D1)
+                            {
+                                menu.UstawSzanseZlamaniaWytrycha(menu.SzansaLatwy);
+                            }
+                            else if (keyPressed.Key == ConsoleKey.D2)
+                            {
+                                menu.UstawSzanseZlamaniaWytrycha(menu.SzansaSredni);
+                            }
+                            else if (keyPressed.Key == ConsoleKey.D3)
+                            {
+                                menu.UstawSzanseZlamaniaWytrycha(menu.SzansaTrudny);
+                            }
+                            else if (keyPressed.Key == ConsoleKey.D0)
+                            { 
+                                Clear(); 
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nieznana komenda!");
+                                menu.SleepAndClearConsole();
+
+                            }
+
                         }
-                        else if (keyPressed.Key == ConsoleKey.D3)
+                        else if (keyPressed.Key == ConsoleKey.D0)
                         {
-                            menu.UstawPoziomTrudny();
+                        break;
+
                         }
-                        else if (keyPressed.Key == ConsoleKey.D0) ; //break;
                         else
                         {
+                            Clear();
                             Console.WriteLine("Nieznana komenda!");
                             menu.SleepAndClearConsole();
                         }
 
                     }
-                    else if (keyPressed.Key == ConsoleKey.D2)
-                    {
-                        menu.WyswietlUstawieniaWytrycha();
-                        keyPressed = Console.ReadKey();
-
-                        if (keyPressed.Key == ConsoleKey.D1)
-                        {
-                            menu.UstawSzanseZlamaniaWytrycha(menu.SzansaLatwy);
-                        }
-                        else if (keyPressed.Key == ConsoleKey.D2)
-                        {
-                            menu.UstawSzanseZlamaniaWytrycha(menu.SzansaSredni);
-                        }
-                        else if (keyPressed.Key == ConsoleKey.D3)
-                        {
-                            menu.UstawSzanseZlamaniaWytrycha(menu.SzansaTrudny);
-                        }
-                        else if (keyPressed.Key == ConsoleKey.D0);
-                        else
-                        {
-                            Console.WriteLine("Nieznana komenda!");
-                            menu.SleepAndClearConsole();
-
-                        }
-
-                    }
-                    else if (keyPressed.Key == ConsoleKey.D0)
-                    {
-                      //  break;
-
-                    }
-                    else
-                    {
-                        Console.WriteLine("Nieznana komenda!");
-                        menu.SleepAndClearConsole();
-                    }
-
-
                 }
                 else if (keyPressed.Key == ConsoleKey.D3)
                 {
-
+                    Clear();
+                    menu.WyswietlInstrukcje();
+                    Console.WriteLine("Nacisnij dowlny przycisk aby wrócić");
+                    Console.ReadKey();
+                    Clear();
                 }
                 else if (keyPressed.Key == ConsoleKey.D0)
                 {
-                    
+                    Clear();
+                    break;
                 }
                 else
-                {
+                {   Clear();
                     Console.WriteLine("Nieznana komenda!");
                     menu.SleepAndClearConsole();
                 }
             }
 
 
-
+            
 
 
         }
-
+        static void Clear()
+        {
+            Console.Clear();
+        }
     }
 }
