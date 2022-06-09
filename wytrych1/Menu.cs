@@ -61,8 +61,8 @@ namespace wytrych1
         {
             Console.WriteLine("INSTRUKCJA");
             Console.WriteLine("Gra polega na otwieraniu zamków w skrzyniach.\n" +
-                "Aby rozpocząć grę wybierz 'Nowa Gra' w menu." + "\nAby przekręcić wytrych w lewo należy wpisać L i nacisnąć ENTER,\n" +
-                "aby przekręcić wytrych w prawo należy wpisać P i nacisnąć ENTER.\n" +
+                "Aby rozpocząć grę wybierz 'Nowa Gra' w menu." + "\nAby przekręcić wytrych w lewo należy nacisnąć STRZAŁKĘ W LEWO,\n" +
+                "aby przekręcić wytrych w prawo należy nacisnąć STRZAŁKĘ W PRAWO.\n" +
                 "Po przekręceniu wytrycha w złą stronę gracz zaczyna od początku sekwencji.\n" +
                 "Przy złym ruchu istnieje szansa na złamanie wytrycha.\n" +
                 "Gra kończy się gdy graczowi skończą się wytrychy, lub naciśnie '0' podczas rozgrywki.\n"+

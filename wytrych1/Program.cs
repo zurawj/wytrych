@@ -43,9 +43,11 @@ namespace wytrych1
                             }
                             if (gra.fail)
                             {
-                            Console.WriteLine("koniec");
-                            break;
+                                break;
                             }
+                           
+                        while (true)
+                        {
                             Console.WriteLine("Grasz dalej?\n1.Tak\n2.Nie");
                             keyPressed = Console.ReadKey(true);
                             if (keyPressed.Key == ConsoleKey.D2)
@@ -57,21 +59,27 @@ namespace wytrych1
                             }
                             else if (keyPressed.Key == ConsoleKey.D1)
                             {
-
+                                break;
                             }
                             else
                             {
                                 Console.WriteLine("Nieznana komenda!");
                                 menu.SleepAndClearConsole();
                             }
+                            break;
+                        }
 
-                        
+
+                        if (keyPressed.Key == ConsoleKey.D2)
+                        {
+                            break;
+                        }
 
 
 
                     }
+
                    
-                    
                 }
 
                 else if (keyPressed.Key == ConsoleKey.D2)
