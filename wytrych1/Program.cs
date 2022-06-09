@@ -12,21 +12,22 @@ namespace wytrych1
 
         static void Main(string[] args)
         {
+
+
             Menu menu = new Menu();
-
-
             while (true)
             {
+               
                 Clear();
                 menu.WyswietlMenu();
                 Skrzynia skrzynia = new Skrzynia(menu);
-                ConsoleKeyInfo keyPressed = Console.ReadKey();
+                ConsoleKeyInfo keyPressed = Console.ReadKey(true);
                 if (keyPressed.Key == ConsoleKey.D1)
                 {
                     Gra gra = new Gra();
                     menu.IloscPunktow = 0;
                     menu.IloscSkrzyni = 0;
-
+                    menu.IloscWytrychow = menu.TempIloscWytrychow;
 
                     while (true)
                     {
@@ -34,32 +35,43 @@ namespace wytrych1
                         Console.WriteLine("Otwórz skrzynie");
                         skrzynia.GenerowanieSekwencji(menu);
 
-                        menu.IloscPunktow += gra.Graj(skrzynia, menu);
-                        if (gra.otwartoSkrzynie)
-                        {
-                            menu.IloscSkrzyni++;
-                        }
-                        Console.WriteLine("Grasz dalej?\n1.Tak\n2.Nie");
-                        keyPressed = Console.ReadKey();
-                        if (keyPressed.Key == ConsoleKey.D2)
-                        {
-                            Clear();
-                            Console.WriteLine("Zdobywasz " + menu.IloscPunktow + " punktów!\nIlość otwartych skrzyni: " + menu.IloscSkrzyni);
-                            menu.SleepAndClearConsole(3000);
+                            
+                            menu.IloscPunktow += gra.Graj(skrzynia, menu);
+                            if (gra.otwartoSkrzynie)
+                            {
+                                menu.IloscSkrzyni++;
+                            }
+                            if (gra.fail)
+                            {
+                            Console.WriteLine("koniec");
                             break;
-                        }
-                        else if (keyPressed.Key == ConsoleKey.D1)
-                        {
-                            continue;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Nieznana komenda!");
-                            menu.SleepAndClearConsole();
-                        }
+                            }
+                            Console.WriteLine("Grasz dalej?\n1.Tak\n2.Nie");
+                            keyPressed = Console.ReadKey(true);
+                            if (keyPressed.Key == ConsoleKey.D2)
+                            {
+                                Clear();
+                                Console.WriteLine("Zdobywasz " + menu.IloscPunktow + " punktów!\nIlość otwartych skrzyni: " + menu.IloscSkrzyni);
+                                menu.SleepAndClearConsole(3000);
+                                break;
+                            }
+                            else if (keyPressed.Key == ConsoleKey.D1)
+                            {
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nieznana komenda!");
+                                menu.SleepAndClearConsole();
+                            }
+
+                        
+
+
+
                     }
-
-
+                   
+                    
                 }
 
                 else if (keyPressed.Key == ConsoleKey.D2)
@@ -68,12 +80,12 @@ namespace wytrych1
                     {
                         Clear();
                         menu.WyswietlOpcje();
-                        keyPressed = Console.ReadKey();
+                        keyPressed = Console.ReadKey(true);
                         if (keyPressed.Key == ConsoleKey.D1)
                         {
                             Clear();
                             menu.WyswietlUstawieniaPoziomuTrudnosci();
-                            keyPressed = Console.ReadKey();
+                            keyPressed = Console.ReadKey(true);
                             Clear();
                             if (keyPressed.Key == ConsoleKey.D1)
                             {
@@ -87,7 +99,7 @@ namespace wytrych1
                             {
                                 menu.UstawPoziomTrudny();
                             }
-                            else if (keyPressed.Key == ConsoleKey.D0) ; //break;
+                            else if (keyPressed.Key == ConsoleKey.D0);
                             else
                             {
                                 Console.WriteLine("Nieznana komenda!");
@@ -99,7 +111,7 @@ namespace wytrych1
                         {
                             Clear();
                             menu.WyswietlUstawieniaWytrycha();
-                            keyPressed = Console.ReadKey();
+                            keyPressed = Console.ReadKey(true);
 
                             if (keyPressed.Key == ConsoleKey.D1)
                             {
@@ -144,7 +156,7 @@ namespace wytrych1
                     Clear();
                     menu.WyswietlInstrukcje();
                     Console.WriteLine("Nacisnij dowlny przycisk aby wrócić");
-                    Console.ReadKey();
+                    Console.ReadKey(true);
                     Clear();
                 }
                 else if (keyPressed.Key == ConsoleKey.D0)

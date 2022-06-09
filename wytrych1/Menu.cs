@@ -10,6 +10,7 @@ namespace wytrych1
     public class Menu
     {
         public int IloscWytrychow { get; set; }
+        public int TempIloscWytrychow;
         public int Szansa { get; set; }
         public int DlugoscSekwencji { get; set; }
 
@@ -25,6 +26,7 @@ namespace wytrych1
         public Menu()
         {   //domyslny poziom latwy
             IloscWytrychow = 10;
+            TempIloscWytrychow = IloscWytrychow;
             DlugoscSekwencji = 4;
             Szansa = 20;
         }
@@ -102,6 +104,7 @@ namespace wytrych1
         private void UstawPoziom(int IloscWytrychow, int DlugoscSekwencji, int Szansa)
         {
             this.IloscWytrychow = IloscWytrychow;
+            TempIloscWytrychow = IloscWytrychow;
             this.DlugoscSekwencji = DlugoscSekwencji;
             this.Szansa = Szansa;
         }

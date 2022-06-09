@@ -10,7 +10,7 @@ namespace wytrych1
     {
         const char L = 'L';
         const char P = 'P';
-        private bool fail = false;
+        public bool fail = false;
         public bool otwartoSkrzynie = false;
 
         public int Graj(Skrzynia skrzynia, Menu menu)
@@ -39,6 +39,7 @@ namespace wytrych1
                             if (menu.IloscWytrychow == 0)
                             {
                                 Console.WriteLine("Nie masz więcej wytrychów! Koniec Gry!");
+                                menu.SleepAndClearConsole(2000);
                                 menu.IloscPunktow = 0;
                                 fail = true;
                                 break;
@@ -72,6 +73,7 @@ namespace wytrych1
             {
                 Console.Clear();
                 Console.WriteLine("Koniec gry! Zdobywasz " + menu.IloscPunktow + " punktów!");
+                menu.SleepAndClearConsole(2000);
                 return menu.IloscPunktow;
             }
             else
@@ -79,6 +81,7 @@ namespace wytrych1
                 Console.Clear();
                 Console.WriteLine("Otwarto skrzynię! Zdobywasz " + menu.IloscPunktow + " punktów!");
                 otwartoSkrzynie = true;
+                menu.SleepAndClearConsole(2000);
                 return menu.IloscPunktow;
 
             }
@@ -90,13 +93,15 @@ namespace wytrych1
             {
                 Console.WriteLine("Lewo");
                 return 'L';
-                
             }
             else if (key.Key == ConsoleKey.RightArrow)
             {
                 Console.WriteLine("Prawo");
                 return 'P';
-                
+            }
+            else if (key.Key == ConsoleKey.D0)
+            {
+                return '0';
             }
             else return '1';
         }
