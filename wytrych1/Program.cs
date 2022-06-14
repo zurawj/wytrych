@@ -12,7 +12,9 @@ namespace wytrych1
 
         static void Main(string[] args)
         {
-
+            //zeby to bylo obiektowo to klasa gra powinna miec pewnie klasa Menu w sobie (bo Menu jest powiazane z gra) oraz Skrzynia
+            //i tutaj powinienies tylko tworzyc obiekt klasy Gra i wysolac metode Graj czy cos takiego.
+            //reszta powinna sie dziac w środku.
 
             Menu menu = new Menu();
             while (true)
@@ -25,9 +27,11 @@ namespace wytrych1
                 if (keyPressed.Key == ConsoleKey.D1)
                 {
                     Gra gra = new Gra();
+                    //moze metoda menu.Reset() ??
                     menu.IloscPunktow = 0;
                     menu.IloscSkrzyni = 0;
-                    menu.IloscWytrychow = menu.TempIloscWytrychow;
+                    menu.IloscWytrychow = menu.TempIloscWytrychow;//co to jest TempIloscWytrychow ??
+
 
                     while (true)
                     {
@@ -89,6 +93,7 @@ namespace wytrych1
                         keyPressed = Console.ReadKey(true);
                         if (keyPressed.Key == ConsoleKey.D1)
                         {
+                            //takie bloki kodu jak ten ponizej powinny byc w jakiejsc metodzie zrobione
                             Clear();
                             menu.WyswietlUstawieniaPoziomuTrudnosci();
                             keyPressed = Console.ReadKey(true);

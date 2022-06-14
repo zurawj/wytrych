@@ -24,14 +24,46 @@ namespace wytrych1
 
         private Random Rnd = new Random();
         public Menu()
-        {   //domyslny poziom latwy
+        {   //domyslny poziom latwy <-- maszjakies zmienne typu SznsaXXX - moze to tutaj tzeba uzyc
             IloscWytrychow = 10;
             TempIloscWytrychow = IloscWytrychow;
             DlugoscSekwencji = 4;
             Szansa = 20;
         }
+        /*
+         * 
+         * To wyswietlanie opcji ja tym zrobil tak jak ponizej
+        public static class Opcje{
+            public static string[] MENU = { "1. Nowa gra", "2. Opcje", "3. Instrukcja", "0. Wyjdz" };
+            public static string[] OPTIONS = { "1. Ustaw poziom trudnosci", "2. Ustaw szanse zlamania wytrycha", "0. Cofnij" };
+            public static string[] LEVEL = { "1. Ustaw poziom trudnosci", "2. Ustaw szanse zlamania wytrycha", "0. Cofnij" };
+            ....
+        }
+
+        public void WyswietlOpcje(string[] lista)
+        {
+            foreach (string l in lista)
+            {
+                Console.WriteLine(l);
+            }
+        }
+
+        //Uzycie
+
+        public void Usage()
+        {
+            WyswietlOpcje(Opcje.MENU);
+            ...
+            WyswietlOpcje(Opcje.LEVEL);
+        }
+        */
+
         public void WyswietlMenu()
         {   
+
+            //moze opcje powinnyc byc const na poczatku pliku
+            //cos jak:
+
             string[] listaOpcji = { "1. Nowa gra", "2. Opcje", "3. Instrukcja", "0. Wyjdz" };
             List<string> MenuOpcje = new List<string>(listaOpcji);
             WyswietlListeOpcji(MenuOpcje);
@@ -82,7 +114,9 @@ namespace wytrych1
 
         public void UstawPoziomLatwy()
         {
-            UstawPoziom(20, 4, SzansaLatwy);
+            UstawPoziom(20, 4, SzansaLatwy);//SzansaXXX powinna byc klasa i powinna miec w sobie to 20 i 4
+            //i powinna byc metoda Ustawpoziom, ktora jakos bierze SzansaXXX i jak jej podstawie wszystko ustawia oraz wyswietla
+            
             Console.WriteLine("Ustawiono poziom łatwy");
             Console.WriteLine("Ilosc wytrychów: " + IloscWytrychow + "\nDługość sekwencji: " + DlugoscSekwencji);
             SleepAndClearConsole(2000);
@@ -137,6 +171,7 @@ namespace wytrych1
             int min = 0;
             int max = 0;
 
+            //a moze Szansa powinna byc osoba klasa, ktora zawiera min i max ?
             if (szansa == SzansaLatwy)
             {
                 min = 5;
@@ -164,9 +199,10 @@ namespace wytrych1
         }
 
         public void SleepAndClearConsole()
-        {   
-            Thread.Sleep(1000);
-            Console.Clear();
+        {
+            //Thread.Sleep(1000);
+            //Console.Clear();
+            SleepAndClearConsole(1000); //<-- dlaczego nie tak?
         }
         public void SleepAndClearConsole(int time)
         {
