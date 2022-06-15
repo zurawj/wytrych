@@ -31,63 +31,8 @@ namespace wytrych1
             DlugoscSekwencji = 4;
             Szansa = 20;
         }
-        /*
-         * 
-         * To wyswietlanie opcji ja tym zrobil tak jak ponizej
-        public static class Opcje{
-            public static string[] MENU = { "1. Nowa gra", "2. Opcje", "3. Instrukcja", "0. Wyjdz" };
-            public static string[] OPTIONS = { "1. Ustaw poziom trudnosci", "2. Ustaw szanse zlamania wytrycha", "0. Cofnij" };
-            public static string[] LEVEL = { "1. Ustaw poziom trudnosci", "2. Ustaw szanse zlamania wytrycha", "0. Cofnij" };
-            ....
-        }
 
-        public void WyswietlOpcje(string[] lista)
-        {
-            foreach (string l in lista)
-            {
-                Console.WriteLine(l);
-            }
-        }
 
-        //Uzycie
-
-        public void Usage()
-        {
-            WyswietlOpcje(Opcje.MENU);
-            ...
-            WyswietlOpcje(Opcje.LEVEL);
-        }
-        */
-
-        public void WyswietlMenu()
-        {
-            Opcje.WyswietlOpcje(Opcje.MENU);
-
-        }
-        public void WyswietlOpcje()
-        {
-            Opcje.WyswietlOpcje(Opcje.OPTIONS);
-        }
-        public void WyswietlUstawieniaPoziomuTrudnosci()
-        {
-            Opcje.WyswietlOpcje(Opcje.LEVEL);
-        }
-
-        public void WyswietlUstawieniaWytrycha()
-        {
-            Opcje.WyswietlOpcje(Opcje.CHANCE);
-        }
-
-        
-        public void WyswietlListeOpcji(List<string> lista)
-        {
-
-            foreach(string l in lista)
-            {
-                Console.WriteLine(l);
-            }
-            
-        }
 
         public void UstawPoziomLatwy()
         {

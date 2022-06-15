@@ -8,11 +8,11 @@ namespace wytrych1
 {
     internal class Gra
     {
-        const char L = 'L';//symbole w tablicy z sekwencją oznaczające ruch w lewo lub prawo
+        const char L = 'L';//symbole w tablicy skrzynia.SkrzyniaArray oznaczające ruch w lewo lub prawo
         const char P = 'P';
         public bool fail = false;//flaga używana przy przegranej w celu wyjscia z gry i wyswietlenia odpowiedniego komunikatu
         public bool otwartoSkrzynie = false;
-
+       
         public int Graj(Skrzynia skrzynia, Menu menu)
         {
             fail = false;
@@ -111,5 +111,124 @@ namespace wytrych1
             return Znak;
             
         }
+
+        public void Logic()
+        {
+            Menu menu = new Menu();
+            while (true)
+            {
+
+                Clear();
+                Opcje.WyswietlOpcje(Opcje.MENU);
+                Skrzynia skrzynia = new Skrzynia(menu);
+                ConsoleKeyInfo keyPressed = Console.ReadKey(true);
+                if (keyPressed.Key == ConsoleKey.D1)
+                {
+                    Gra gra = new Gra();
+                    menu.Reset();
+
+
+                    while (true)
+                    {
+                        Clear();
+                        Console.WriteLine("Otwórz skrzynie");
+                        skrzynia.GenerowanieSekwencji(menu);
+
+
+                        menu.IloscPunktow += gra.Graj(skrzynia, menu);
+                        if (gra.otwartoSkrzynie)
+                        {
+                            menu.IloscSkrzyni++;
+                        }
+                        if (gra.fail)
+                        {
+                            break;
+                        }
+
+                        while (true)
+                        {
+                            Console.WriteLine("Grasz dalej?\n1.Tak\n2.Nie");
+                            keyPressed = Console.ReadKey(true);
+                            if (keyPressed.Key == ConsoleKey.D2)
+                            {
+                                Clear();
+                                Console.WriteLine("Zdobywasz " + menu.IloscPunktow + " punktów!\nIlość otwartych skrzyni: " + menu.IloscSkrzyni);
+                                menu.SleepAndClearConsole(3000);
+                                break;
+                            }
+                            else if (keyPressed.Key == ConsoleKey.D1)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Nieznana komenda!");
+                                menu.SleepAndClearConsole();
+                                continue;
+                            }
+
+                        }
+
+
+                        if (keyPressed.Key == ConsoleKey.D2)
+                        {
+                            break;
+                        }
+
+                    }
+
+                }
+
+                else if (keyPressed.Key == ConsoleKey.D2)
+                {
+                    while (true)
+                    {
+                        Clear();
+                        Opcje.WyswietlOpcje(Opcje.OPTIONS);
+                        keyPressed = Console.ReadKey(true);
+                        if (keyPressed.Key == ConsoleKey.D1)
+                        {
+
+                            menu.optionsKeyPressedD1();
+
+                        }
+                        else if (keyPressed.Key == ConsoleKey.D2)
+                        {
+                            menu.optionsKeyPressedD2();
+
+                        }
+                        else if (keyPressed.Key == ConsoleKey.D0)
+                        {
+                            break;
+
+                        }
+                        else
+                        {
+                            menu.unknownCommand();
+                        }
+
+                    }
+                }
+                else if (keyPressed.Key == ConsoleKey.D3)
+                {
+                    menu.showInstructions();
+                }
+                else if (keyPressed.Key == ConsoleKey.D0)
+                {
+                    Clear();
+                    break;
+                }
+                else
+                {
+                    menu.unknownCommand();
+                }
+            }
+
+        }
+        static void Clear()
+        {
+            Console.Clear();
+        }
     }
+    
 }
