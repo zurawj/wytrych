@@ -21,16 +21,13 @@ namespace wytrych1
             {
                
                 Clear();
-                menu.WyswietlMenu();
+                Opcje.WyswietlOpcje(Opcje.MENU);
                 Skrzynia skrzynia = new Skrzynia(menu);
                 ConsoleKeyInfo keyPressed = Console.ReadKey(true);
                 if (keyPressed.Key == ConsoleKey.D1)
                 {
                     Gra gra = new Gra();
-                    //moze metoda menu.Reset() ??
-                    menu.IloscPunktow = 0;
-                    menu.IloscSkrzyni = 0;
-                    menu.IloscWytrychow = menu.TempIloscWytrychow;//co to jest TempIloscWytrychow ??
+                    menu.Reset();
 
 
                     while (true)
@@ -89,63 +86,17 @@ namespace wytrych1
                     while (true)
                     {
                         Clear();
-                        menu.WyswietlOpcje();
+                        Opcje.WyswietlOpcje(Opcje.OPTIONS);
                         keyPressed = Console.ReadKey(true);
                         if (keyPressed.Key == ConsoleKey.D1)
                         {
                             //takie bloki kodu jak ten ponizej powinny byc w jakiejsc metodzie zrobione
-                            Clear();
-                            menu.WyswietlUstawieniaPoziomuTrudnosci();
-                            keyPressed = Console.ReadKey(true);
-                            Clear();
-                            if (keyPressed.Key == ConsoleKey.D1)
-                            {
-                                menu.UstawPoziomLatwy();
-                            }
-                            else if (keyPressed.Key == ConsoleKey.D2)
-                            {
-                                menu.UstawPoziomSredni();
-                            }
-                            else if (keyPressed.Key == ConsoleKey.D3)
-                            {
-                                menu.UstawPoziomTrudny();
-                            }
-                            else if (keyPressed.Key == ConsoleKey.D0);
-                            else
-                            {
-                                Console.WriteLine("Nieznana komenda!");
-                                menu.SleepAndClearConsole();
-                            }
+                            menu.optionsKeyPressedD1();
 
                         }
                         else if (keyPressed.Key == ConsoleKey.D2)
                         {
-                            Clear();
-                            menu.WyswietlUstawieniaWytrycha();
-                            keyPressed = Console.ReadKey(true);
-
-                            if (keyPressed.Key == ConsoleKey.D1)
-                            {
-                                menu.UstawSzanseZlamaniaWytrycha(menu.SzansaLatwy);
-                            }
-                            else if (keyPressed.Key == ConsoleKey.D2)
-                            {
-                                menu.UstawSzanseZlamaniaWytrycha(menu.SzansaSredni);
-                            }
-                            else if (keyPressed.Key == ConsoleKey.D3)
-                            {
-                                menu.UstawSzanseZlamaniaWytrycha(menu.SzansaTrudny);
-                            }
-                            else if (keyPressed.Key == ConsoleKey.D0)
-                            { 
-                                Clear(); 
-                            }
-                            else
-                            {
-                                Console.WriteLine("Nieznana komenda!");
-                                menu.SleepAndClearConsole();
-
-                            }
+                            menu.optionsKeyPressedD2();
 
                         }
                         else if (keyPressed.Key == ConsoleKey.D0)
@@ -155,9 +106,7 @@ namespace wytrych1
                         }
                         else
                         {
-                            Clear();
-                            Console.WriteLine("Nieznana komenda!");
-                            menu.SleepAndClearConsole();
+                            menu.unknownCommand();
                         }
 
                     }
@@ -176,9 +125,8 @@ namespace wytrych1
                     break;
                 }
                 else
-                {   Clear();
-                    Console.WriteLine("Nieznana komenda!");
-                    menu.SleepAndClearConsole();
+                {
+                    menu.unknownCommand();
                 }
             }
 

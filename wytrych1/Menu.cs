@@ -18,6 +18,7 @@ namespace wytrych1
 
         public int IloscPunktow { get; set; }
 
+        public ConsoleKeyInfo keyPressed;
         public int SzansaLatwy = 20;
         public int SzansaSredni = 50;
         public int SzansaTrudny = 80;
@@ -59,34 +60,22 @@ namespace wytrych1
         */
 
         public void WyswietlMenu()
-        {   
+        {
+            Opcje.WyswietlOpcje(Opcje.MENU);
 
-            //moze opcje powinnyc byc const na poczatku pliku
-            //cos jak:
-
-            string[] listaOpcji = { "1. Nowa gra", "2. Opcje", "3. Instrukcja", "0. Wyjdz" };
-            List<string> MenuOpcje = new List<string>(listaOpcji);
-            WyswietlListeOpcji(MenuOpcje);
         }
         public void WyswietlOpcje()
         {
-            string[] listaOpcji = { "1. Ustaw poziom trudnosci", "2. Ustaw szanse zlamania wytrycha", "0. Cofnij" };
-            List<string> MenuOpcje = new List<string>(listaOpcji);
-            WyswietlListeOpcji(MenuOpcje);
+            Opcje.WyswietlOpcje(Opcje.OPTIONS);
         }
         public void WyswietlUstawieniaPoziomuTrudnosci()
         {
-            string[] listaOpcji = { "Wybierz poziom trudności:", "1. Łatwy", "2. Średni", "3. Trudny" , "0. Cofnij" };
-            List<string> MenuOpcje = new List<string>(listaOpcji);
-            WyswietlListeOpcji(MenuOpcje);
+            Opcje.WyswietlOpcje(Opcje.LEVEL);
         }
 
         public void WyswietlUstawieniaWytrycha()
         {
-            string[] listaOpcji = { "Ustawienia szansy złamania wytrycha", "1. Mała szansa złamania wytrycha", "2. Średnia szansa złamania wytrycha",
-                "3. Duża szansa złamania wytrycha", "0. Cofnij" };
-            List<string> MenuOpcje = new List<string>(listaOpcji);
-            WyswietlListeOpcji(MenuOpcje);
+            Opcje.WyswietlOpcje(Opcje.CHANCE);
         }
 
         public void WyswietlInstrukcje()
@@ -198,15 +187,84 @@ namespace wytrych1
 
         }
 
+        public void Reset()
+        {
+            IloscPunktow = 0;
+            IloscSkrzyni = 0;
+            IloscWytrychow = TempIloscWytrychow;
+        }
+        public void optionsKeyPressedD1()
+        {
+            Clear();
+            Opcje.WyswietlOpcje(Opcje.LEVEL);
+            keyPressed = Console.ReadKey(true);
+            Clear();
+            if (keyPressed.Key == ConsoleKey.D1)
+            {
+                UstawPoziomLatwy();
+            }
+            else if (keyPressed.Key == ConsoleKey.D2)
+            {
+                UstawPoziomSredni();
+            }
+            else if (keyPressed.Key == ConsoleKey.D3)
+            {
+                UstawPoziomTrudny();
+            }
+            else if (keyPressed.Key == ConsoleKey.D0) ;
+            else
+            {
+                Console.WriteLine("Nieznana komenda!");
+                SleepAndClearConsole();
+            }
+        }
+
+        public void optionsKeyPressedD2()
+        {
+            Clear();
+            Opcje.WyswietlOpcje(Opcje.CHANCE);
+            keyPressed = Console.ReadKey(true);
+
+            if (keyPressed.Key == ConsoleKey.D1)
+            {
+                UstawSzanseZlamaniaWytrycha(SzansaLatwy);
+            }
+            else if (keyPressed.Key == ConsoleKey.D2)
+            {
+                UstawSzanseZlamaniaWytrycha(SzansaSredni);
+            }
+            else if (keyPressed.Key == ConsoleKey.D3)
+            {
+                UstawSzanseZlamaniaWytrycha(SzansaTrudny);
+            }
+            else if (keyPressed.Key == ConsoleKey.D0)
+            {
+                Clear();
+            }
+            else
+            {
+                Console.WriteLine("Nieznana komenda!");
+                SleepAndClearConsole();
+
+            }
+        }
+        public void unknownCommand()
+        {
+            Clear();
+            Console.WriteLine("Nieznana komenda!");
+            SleepAndClearConsole();
+        }
         public void SleepAndClearConsole()
         {
-            //Thread.Sleep(1000);
-            //Console.Clear();
-            SleepAndClearConsole(1000); //<-- dlaczego nie tak?
+            SleepAndClearConsole(1000);
         }
         public void SleepAndClearConsole(int time)
         {
             Thread.Sleep(time);
+            Console.Clear();
+        }
+        static void Clear()
+        {
             Console.Clear();
         }
     }
