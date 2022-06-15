@@ -8,9 +8,9 @@ namespace wytrych1
 {
     internal class Gra
     {
-        const char L = 'L';//co to znaczy 'L' ??
-        const char P = 'P';//co to znaczy 'P' ??
-        public bool fail = false;//co to znaczy 'fail' ??
+        const char L = 'L';//symbole w tablicy z sekwencją oznaczające ruch w lewo lub prawo
+        const char P = 'P';
+        public bool fail = false;//flaga używana przy przegranej w celu wyjscia z gry i wyswietlenia odpowiedniego komunikatu
         public bool otwartoSkrzynie = false;
 
         public int Graj(Skrzynia skrzynia, Menu menu)
@@ -21,16 +21,16 @@ namespace wytrych1
             while (counter < skrzynia.SkrzyniaArray.Length)
             {   
                char znak = ZamienNaZnak(Console.ReadKey(true));
-            
-            //dwa razy wiciagasz z tablicy - skrzynia.SkrzyniaArray[counter] - mozna raz
-                    if ((znak == skrzynia.SkrzyniaArray[counter]) && (znak == L || znak == P)) 
+
+                char znakZeSkrzyni = skrzynia.SkrzyniaArray[counter];
+                    if ((znak == znakZeSkrzyni) && (znak == L || znak == P)) 
                     {
                         Console.WriteLine("OK");
                         counter++;
                         menu.IloscPunktow = menu.GenerujIloscPunktow(menu.Szansa);
 
                     }
-                    else if ((znak != skrzynia.SkrzyniaArray[counter]) && (znak == L || znak == P))
+                    else if ((znak != znakZeSkrzyni) && (znak == L || znak == P))
                     {
                         if (skrzynia.ZlamanieWytrycha(menu.Szansa))
                         {
@@ -75,7 +75,7 @@ namespace wytrych1
                 Console.Clear();
                 Console.WriteLine("Koniec gry! Zdobywasz " + menu.IloscPunktow + " punktów!");
                 menu.SleepAndClearConsole(2000);
-                return menu.IloscPunktow;
+               
             }
             else
             {
@@ -83,29 +83,33 @@ namespace wytrych1
                 Console.WriteLine("Otwarto skrzynię! Zdobywasz " + menu.IloscPunktow + " punktów!");
                 otwartoSkrzynie = true;
                 menu.SleepAndClearConsole(2000);
-                return menu.IloscPunktow;
+                
 
             }
-            //jeden return powinien byc
+            return menu.IloscPunktow;
+           
         }
         private char ZamienNaZnak(ConsoleKeyInfo key)
         {
+            char Znak;
             if (key.Key == ConsoleKey.LeftArrow)
             {
                 Console.WriteLine("Lewo");
-                return 'L';//zrobiles na gorze zmienne, a uzywasz dalej 'L'....
+
+                Znak = L;
             }
             else if (key.Key == ConsoleKey.RightArrow)
             {
                 Console.WriteLine("Prawo");
-                return 'P';
+                Znak = P;
             }
             else if (key.Key == ConsoleKey.D0)
             {
-                return '0';
+                Znak = '0';
             }
-            else return '1';
-            //jeden return
+            else Znak = '1';
+            return Znak;
+            
         }
     }
 }

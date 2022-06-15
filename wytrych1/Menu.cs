@@ -78,19 +78,7 @@ namespace wytrych1
             Opcje.WyswietlOpcje(Opcje.CHANCE);
         }
 
-        public void WyswietlInstrukcje()
-        {
-            Console.WriteLine("INSTRUKCJA");
-            Console.WriteLine("Gra polega na otwieraniu zamków w skrzyniach.\n" +
-                "Aby rozpocząć grę wybierz 'Nowa Gra' w menu." + "\nAby przekręcić wytrych w lewo należy nacisnąć STRZAŁKĘ W LEWO,\n" +
-                "aby przekręcić wytrych w prawo należy nacisnąć STRZAŁKĘ W PRAWO.\n" +
-                "Po przekręceniu wytrycha w złą stronę gracz zaczyna od początku sekwencji.\n" +
-                "Przy złym ruchu istnieje szansa na złamanie wytrycha.\n" +
-                "Gra kończy się gdy graczowi skończą się wytrychy, lub naciśnie '0' podczas rozgrywki.\n"+
-                "Za każdą otwartą skrzynię gracz otrzymuje punkty. Ilość przydzielonych punktów zależna jest od poziomu trudności.");
-
-            Console.WriteLine("--------------------------");
-        }
+        
         public void WyswietlListeOpcji(List<string> lista)
         {
 
@@ -124,7 +112,7 @@ namespace wytrych1
             Console.WriteLine("Ilosc wytrychów: " + IloscWytrychow + "\nDługość sekwencji: " + DlugoscSekwencji);
             SleepAndClearConsole(2000);
         }
-        private void UstawPoziom(int IloscWytrychow, int DlugoscSekwencji, int Szansa)
+        private void UstawPoziom(int IloscWytrychow, int DlugoscSekwencji,int Szansa)
         {
             this.IloscWytrychow = IloscWytrychow;
             TempIloscWytrychow = IloscWytrychow;
@@ -247,6 +235,14 @@ namespace wytrych1
                 SleepAndClearConsole();
 
             }
+        }
+        public void showInstructions()
+        {
+            Clear();
+            Opcje.WyswietlInstrukcje();
+            Console.WriteLine("Nacisnij dowlny przycisk aby wrócić");
+            Console.ReadKey(true);
+            Clear();
         }
         public void unknownCommand()
         {

@@ -113,11 +113,7 @@ namespace wytrych1
                 }
                 else if (keyPressed.Key == ConsoleKey.D3)
                 {
-                    Clear();
-                    menu.WyswietlInstrukcje();
-                    Console.WriteLine("Nacisnij dowlny przycisk aby wrócić");
-                    Console.ReadKey(true);
-                    Clear();
+                    menu.showInstructions();
                 }
                 else if (keyPressed.Key == ConsoleKey.D0)
                 {
