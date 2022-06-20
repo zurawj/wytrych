@@ -17,7 +17,7 @@ namespace wytrych1
             //reszta powinna sie dziac w środku.
             Gra gra = new Gra();
             gra.Logic();
-            Menu menu = new Menu();
+            //Menu menu = new Menu();
             //while (true)
             //{
                

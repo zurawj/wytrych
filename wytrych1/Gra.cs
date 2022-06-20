@@ -124,7 +124,6 @@ namespace wytrych1
                 ConsoleKeyInfo keyPressed = Console.ReadKey(true);
                 if (keyPressed.Key == ConsoleKey.D1)
                 {
-                    Gra gra = new Gra();
                     menu.Reset();
 
 
@@ -135,12 +134,12 @@ namespace wytrych1
                         skrzynia.GenerowanieSekwencji(menu);
 
 
-                        menu.IloscPunktow += gra.Graj(skrzynia, menu);
-                        if (gra.otwartoSkrzynie)
+                        menu.IloscPunktow += Graj(skrzynia, menu);
+                        if (otwartoSkrzynie)
                         {
                             menu.IloscSkrzyni++;
                         }
-                        if (gra.fail)
+                        if (fail)
                         {
                             break;
                         }
@@ -189,12 +188,12 @@ namespace wytrych1
                         if (keyPressed.Key == ConsoleKey.D1)
                         {
 
-                            menu.optionsKeyPressedD1();
+                            menu.OptionsKeyPressedD1();
 
                         }
                         else if (keyPressed.Key == ConsoleKey.D2)
                         {
-                            menu.optionsKeyPressedD2();
+                            menu.OptionsKeyPressedD2();
 
                         }
                         else if (keyPressed.Key == ConsoleKey.D0)
@@ -204,14 +203,14 @@ namespace wytrych1
                         }
                         else
                         {
-                            menu.unknownCommand();
+                            menu.UnknownCommand();
                         }
 
                     }
                 }
                 else if (keyPressed.Key == ConsoleKey.D3)
                 {
-                    menu.showInstructions();
+                    menu.ShowInstructions();
                 }
                 else if (keyPressed.Key == ConsoleKey.D0)
                 {
@@ -220,7 +219,7 @@ namespace wytrych1
                 }
                 else
                 {
-                    menu.unknownCommand();
+                    menu.UnknownCommand();
                 }
             }
 

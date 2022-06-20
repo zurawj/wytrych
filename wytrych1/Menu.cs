@@ -126,7 +126,7 @@ namespace wytrych1
             IloscSkrzyni = 0;
             IloscWytrychow = TempIloscWytrychow;
         }
-        public void optionsKeyPressedD1()
+        public void OptionsKeyPressedD1()
         {
             Clear();
             Opcje.WyswietlOpcje(Opcje.LEVEL);
@@ -152,7 +152,7 @@ namespace wytrych1
             }
         }
 
-        public void optionsKeyPressedD2()
+        public void OptionsKeyPressedD2()
         {
             Clear();
             Opcje.WyswietlOpcje(Opcje.CHANCE);
@@ -181,7 +181,7 @@ namespace wytrych1
 
             }
         }
-        public void showInstructions()
+        public void ShowInstructions()
         {
             Clear();
             Opcje.WyswietlInstrukcje();
@@ -189,7 +189,7 @@ namespace wytrych1
             Console.ReadKey(true);
             Clear();
         }
-        public void unknownCommand()
+        public void UnknownCommand()
         {
             Clear();
             Console.WriteLine("Nieznana komenda!");
