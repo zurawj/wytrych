@@ -14,12 +14,12 @@ namespace wytrych1
 
         public Skrzynia(Menu menu)
         {
-            this.SkrzyniaArray = new char[menu.DlugoscSekwencji];
+            this.SkrzyniaArray = new char[menu.szansa.DlugoscSekwencji];
         }
         public void GenerowanieSekwencji(Menu menu)
         {
             
-            for (int i = 0; i < menu.DlugoscSekwencji; i++)
+            for (int i = 0; i < menu.szansa.DlugoscSekwencji; i++)
             {  
                 if (Rnd.Next(0, 2) > 0)
                 {

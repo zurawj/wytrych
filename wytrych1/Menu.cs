@@ -28,11 +28,7 @@ namespace wytrych1
         public Menu()
         {   //domyslny poziom latwy <-- maszjakies zmienne typu SznsaXXX - moze to tutaj tzeba uzyc
             szansa.SetSzansaLatwy();
-            UstawPoziom(szansa);
-            //IloscWytrychow = 10;
-            //TempIloscWytrychow = IloscWytrychow;
-            //DlugoscSekwencji = 4;
-            //Szansa = 20;
+           // UstawPoziom(szansa);
         }
 
 
@@ -42,7 +38,6 @@ namespace wytrych1
             //UstawPoziom(20, 4, SzansaLatwy);//SzansaXXX powinna byc klasa i powinna miec w sobie to 20 i 4
             //i powinna byc metoda Ustawpoziom, ktora jakos bierze SzansaXXX i jak jej podstawie wszystko ustawia oraz wyswietla
             szansa.SetSzansaLatwy();
-            UstawPoziom(szansa);
             Console.WriteLine("Ustawiono poziom łatwy");
             Console.WriteLine("Ilosc wytrychów: " + szansa.IloscWytrychow + "\nDługość sekwencji: " + szansa.DlugoscSekwencji);
             SleepAndClearConsole(2000);
@@ -50,7 +45,6 @@ namespace wytrych1
         public void UstawPoziomSredni()
         {
             szansa.SetSzansaSredni();
-            UstawPoziom(szansa);      
             Console.WriteLine("Ustawiono poziom średni");
             Console.WriteLine("Ilosc wytrychów: " + szansa.IloscWytrychow + "\nDługość sekwencji: " + szansa.DlugoscSekwencji);
             SleepAndClearConsole(2000);
@@ -58,25 +52,11 @@ namespace wytrych1
         public void UstawPoziomTrudny()
         {
             szansa.SetSzansaTrudny();
-            UstawPoziom(szansa);
             Console.WriteLine("Ustawiono poziom trudny");
             Console.WriteLine("Ilosc wytrychów: " + szansa.IloscWytrychow + "\nDługość sekwencji: " + szansa.DlugoscSekwencji);
             SleepAndClearConsole(2000);
         }
-        private void UstawPoziom(int IloscWytrychow, int DlugoscSekwencji,int Szansa)
-        {
-           // this.IloscWytrychow = IloscWytrychow;
-            //TempIloscWytrychow = IloscWytrychow;
-            this.DlugoscSekwencji = DlugoscSekwencji;
-            this.Szansa = Szansa;
-        }
-        private void UstawPoziom(Szansa szansa)
-        {   
-            //this.IloscWytrychow = szansa.IloscWytrychow;
-           // TempIloscWytrychow = szansa.IloscWytrychow;
-            this.DlugoscSekwencji = szansa.DlugoscSekwencji;
-            this.Szansa = szansa.Chance;
-        }
+
         public void UstawSzanseZlamaniaWytrycha(Szansa szansa)
         {
             Console.Clear();

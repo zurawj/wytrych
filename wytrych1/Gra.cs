@@ -32,7 +32,7 @@ namespace wytrych1
                     }
                     else if ((znak != znakZeSkrzyni) && (znak == L || znak == P))
                     {
-                        if (skrzynia.ZlamanieWytrycha(menu.Szansa))
+                        if (skrzynia.ZlamanieWytrycha(szansa.Chance))
                         {
                             szansa.IloscWytrychow--;
                             Console.WriteLine("Zlamany wytrych! Zaczynasz od nowa. Pozostało "+szansa.IloscWytrychow+" wytrychów." );
