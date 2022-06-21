@@ -8,13 +8,13 @@ namespace wytrych1
 {
     public class Szansa
     {
-         public int Latwy = 30;
+         public int Latwy = 30; //30% szansy na złamanie wytrycha przy złym ruchu
          public int Sredni = 50;
          public int Trudny = 80;
         public int min = 0;
         public int max = 0;
         public int IloscWytrychow { get; set; }
-        public int TempIloscWytrychow;
+        public int TempIloscWytrychow; //zabezpieczenie przed naliczaniem ujemnych wytrychów
         public int Chance { get; set; }
         public int DlugoscSekwencji { get; set; }
 
@@ -24,7 +24,7 @@ namespace wytrych1
             IloscWytrychow = 20;
             TempIloscWytrychow = IloscWytrychow;
             DlugoscSekwencji = 4;
-            min = 5;
+            min = 5;  //zakres ilości punktów jakie zostaną przydzielone po otwarciu skrzyni
             max = 20;
         }
         public void SetSzansaSredni()

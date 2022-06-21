@@ -32,7 +32,7 @@ namespace wytrych1
 
         public bool ZlamanieWytrycha(int szansa)
         {
-            return (Rnd.Next(Min, Max) <= szansa);
+            return Rnd.Next(Min, Max) <= szansa;
         }
 
     }
