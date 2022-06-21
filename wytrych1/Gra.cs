@@ -13,7 +13,7 @@ namespace wytrych1
         public bool fail = false;//flaga używana przy przegranej w celu wyjscia z gry i wyswietlenia odpowiedniego komunikatu
         public bool otwartoSkrzynie = false;
        
-        public int Graj(Skrzynia skrzynia, Menu menu)
+        public int Graj(Skrzynia skrzynia, Menu menu, Szansa szansa)
         {
             fail = false;
             otwartoSkrzynie = false;
@@ -27,17 +27,17 @@ namespace wytrych1
                     {
                         Console.WriteLine("OK");
                         counter++;
-                        menu.IloscPunktow = menu.GenerujIloscPunktow(menu.Szansa);
+                        menu.IloscPunktow = menu.GenerujIloscPunktow(szansa);
 
                     }
                     else if ((znak != znakZeSkrzyni) && (znak == L || znak == P))
                     {
                         if (skrzynia.ZlamanieWytrycha(menu.Szansa))
                         {
-                            menu.IloscWytrychow--;
-                            Console.WriteLine("Zlamany wytrych! Zaczynasz od nowa. Pozostało "+menu.IloscWytrychow+" wytrychów." );
+                            szansa.IloscWytrychow--;
+                            Console.WriteLine("Zlamany wytrych! Zaczynasz od nowa. Pozostało "+szansa.IloscWytrychow+" wytrychów." );
                             counter = 0;
-                            if (menu.IloscWytrychow == 0)
+                            if (szansa.IloscWytrychow == 0)
                             {
                                 Console.WriteLine("Nie masz więcej wytrychów! Koniec Gry!");
                                 menu.SleepAndClearConsole(2000);
@@ -134,7 +134,7 @@ namespace wytrych1
                         skrzynia.GenerowanieSekwencji(menu);
 
 
-                        menu.IloscPunktow += Graj(skrzynia, menu);
+                        menu.IloscPunktow += Graj(skrzynia, menu, menu.szansa);
                         if (otwartoSkrzynie)
                         {
                             menu.IloscSkrzyni++;

@@ -9,8 +9,8 @@ namespace wytrych1
 {
     public class Menu
     {
-        public int IloscWytrychow { get; set; }
-        public int TempIloscWytrychow;
+       // public int IloscWytrychow { get; set; }
+       // public int TempIloscWytrychow;
         public int Szansa { get; set; }
         public int DlugoscSekwencji { get; set; }
 
@@ -24,10 +24,11 @@ namespace wytrych1
         public int SzansaTrudny = 80;
 
         private Random Rnd = new Random();
-        Szansa szansa = new Szansa();
+        public Szansa szansa = new Szansa();
         public Menu()
         {   //domyslny poziom latwy <-- maszjakies zmienne typu SznsaXXX - moze to tutaj tzeba uzyc
             szansa.SetSzansaLatwy();
+            UstawPoziom(szansa);
             //IloscWytrychow = 10;
             //TempIloscWytrychow = IloscWytrychow;
             //DlugoscSekwencji = 4;
@@ -64,35 +65,35 @@ namespace wytrych1
         }
         private void UstawPoziom(int IloscWytrychow, int DlugoscSekwencji,int Szansa)
         {
-            this.IloscWytrychow = IloscWytrychow;
-            TempIloscWytrychow = IloscWytrychow;
+           // this.IloscWytrychow = IloscWytrychow;
+            //TempIloscWytrychow = IloscWytrychow;
             this.DlugoscSekwencji = DlugoscSekwencji;
             this.Szansa = Szansa;
         }
         private void UstawPoziom(Szansa szansa)
         {   
-            this.IloscWytrychow = szansa.IloscWytrychow;
-            TempIloscWytrychow = szansa.IloscWytrychow;
+            //this.IloscWytrychow = szansa.IloscWytrychow;
+           // TempIloscWytrychow = szansa.IloscWytrychow;
             this.DlugoscSekwencji = szansa.DlugoscSekwencji;
             this.Szansa = szansa.Chance;
         }
-        public void UstawSzanseZlamaniaWytrycha(int szansa)
+        public void UstawSzanseZlamaniaWytrycha(Szansa szansa)
         {
             Console.Clear();
-            if (szansa == SzansaLatwy)
+            if (szansa.Chance == szansa.Latwy)
             {  
-                Szansa = SzansaLatwy;
+                Szansa = szansa.Latwy;
                 Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
             }
-            else if (szansa == SzansaTrudny)
+            else if (szansa.Chance == szansa.Trudny)
             {
-                Szansa = SzansaTrudny;
+                Szansa = szansa.Trudny;
                 Console.WriteLine("Ustawiono dużą szanse złamania wytrycha");
             }
             else
             {
                 
-                Szansa = SzansaSredni;
+                Szansa = szansa.Sredni;
                 Console.WriteLine("Ustawiono średnią szanse złamania wytrycha");
                
             }
@@ -100,35 +101,14 @@ namespace wytrych1
             
             SleepAndClearConsole();
         }
-        public int GenerujIloscPunktow(int szansa) 
+        public int GenerujIloscPunktow(Szansa szansa) 
         {
-            int min = 0;
-            int max = 0;
-
-            //a moze Szansa powinna byc osoba klasa, ktora zawiera min i max ?
-            if (szansa == SzansaLatwy)
+            if(szansa.min != szansa.max)
             {
-                min = 5;
-                max = 20;
-
-            }
-            else if(szansa == SzansaSredni)
-            {
-                min = 15;
-                max = 30;
-            }
-            else if(szansa == SzansaTrudny)
-            {
-                min = 25;
-                max = 40;
-                
-            }
-            if(min != max)
-            {
-                return Rnd.Next(min, max);
+                return Rnd.Next(szansa.min, szansa.max);
             }
             else return 0;
-            
+        
 
         }
 
@@ -136,7 +116,7 @@ namespace wytrych1
         {
             IloscPunktow = 0;
             IloscSkrzyni = 0;
-            IloscWytrychow = TempIloscWytrychow;
+            szansa.IloscWytrychow = szansa.TempIloscWytrychow;
         }
         public void OptionsKeyPressedD1()
         {
@@ -146,7 +126,6 @@ namespace wytrych1
             Clear();
             if (keyPressed.Key == ConsoleKey.D1)
             {
-                
                 UstawPoziomLatwy();
             }
             else if (keyPressed.Key == ConsoleKey.D2)
@@ -173,15 +152,15 @@ namespace wytrych1
 
             if (keyPressed.Key == ConsoleKey.D1)
             {
-                UstawSzanseZlamaniaWytrycha(SzansaLatwy);
+                UstawSzanseZlamaniaWytrycha(szansa);
             }
             else if (keyPressed.Key == ConsoleKey.D2)
             {
-                UstawSzanseZlamaniaWytrycha(SzansaSredni);
+                UstawSzanseZlamaniaWytrycha(szansa);
             }
             else if (keyPressed.Key == ConsoleKey.D3)
             {
-                UstawSzanseZlamaniaWytrycha(SzansaTrudny);
+                UstawSzanseZlamaniaWytrycha(szansa);
             }
             else if (keyPressed.Key == ConsoleKey.D0)
             {

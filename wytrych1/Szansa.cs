@@ -29,7 +29,7 @@ namespace wytrych1
             TempIloscWytrychow = IloscWytrychow;
             DlugoscSekwencji = 4;
             min = 5;
-            max = 15;
+            max = 20;
         }
         public void SetSzansaSredni()
         {
@@ -37,8 +37,8 @@ namespace wytrych1
             IloscWytrychow = 10;
             TempIloscWytrychow = IloscWytrychow;
             DlugoscSekwencji = 7;
-            min = 5;
-            max = 15;
+            min = 15;
+            max = 30;
         }
         public void SetSzansaTrudny()
         {
@@ -46,29 +46,10 @@ namespace wytrych1
             IloscWytrychow = 5;
             TempIloscWytrychow = IloscWytrychow;
             DlugoscSekwencji = 10;
-            min = 5;
-            max = 15;
+            min = 25;
+            max = 40;
         }
-        public void GetMinMax(int szansa)
-        {
-            if (szansa == Latwy)
-            {
-                min = 5;
-                max = 20;
 
-            }
-            else if (szansa == Sredni)
-            {
-                min = 15;
-                max = 30;
-            }
-            else if (szansa == Trudny)
-            {
-                min = 25;
-                max = 40;
-
-            }
-        }
 
 
     }
