@@ -8,19 +8,46 @@ namespace wytrych1
 {
     public class Szansa
     {
-         public int Latwy = 20;
+         public int Latwy = 30;
          public int Sredni = 50;
          public int Trudny = 80;
         public int min = 0;
         public int max = 0;
         public int IloscWytrychow { get; set; }
         public int TempIloscWytrychow;
-       // public int Szansa { get; set; }
+        public int Chance { get; set; }
         public int DlugoscSekwencji { get; set; }
 
         public Szansa GetChanceEasy()
         {
-            return new Szansa();
+          return null;
+        }
+        public void SetSzansaLatwy()
+        {
+            Chance = Latwy;
+            IloscWytrychow = 20;
+            TempIloscWytrychow = IloscWytrychow;
+            DlugoscSekwencji = 4;
+            min = 5;
+            max = 15;
+        }
+        public void SetSzansaSredni()
+        {
+            Chance = Sredni;
+            IloscWytrychow = 10;
+            TempIloscWytrychow = IloscWytrychow;
+            DlugoscSekwencji = 7;
+            min = 5;
+            max = 15;
+        }
+        public void SetSzansaTrudny()
+        {
+            Chance = Trudny;
+            IloscWytrychow = 5;
+            TempIloscWytrychow = IloscWytrychow;
+            DlugoscSekwencji = 10;
+            min = 5;
+            max = 15;
         }
         public void GetMinMax(int szansa)
         {
@@ -42,6 +69,7 @@ namespace wytrych1
 
             }
         }
+
 
     }
 }
