@@ -18,10 +18,6 @@ namespace wytrych1
         public int Chance { get; set; }
         public int DlugoscSekwencji { get; set; }
 
-        public Szansa GetChanceEasy()
-        {
-          return null;
-        }
         public void SetSzansaLatwy()
         {
             Chance = Latwy;
@@ -50,7 +46,17 @@ namespace wytrych1
             max = 40;
         }
 
-
-
+        public void UstawMalaSzanseZlamaniaWytrycha()
+        {
+            Chance = Latwy;
+        }
+        public void UstawSredniaSzanseZlamaniaWytrycha()
+        {
+            Chance = Sredni;
+        }
+        public void UstawDuzaSzanseZlamaniaWytrycha()
+        {
+            Chance = Trudny;
+        }
     }
 }

@@ -63,7 +63,7 @@ namespace wytrych1
             if (szansa.Chance == szansa.Latwy)
             {  
                 Szansa = szansa.Latwy;
-                Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
+               
             }
             else if (szansa.Chance == szansa.Trudny)
             {
@@ -106,15 +106,18 @@ namespace wytrych1
             Clear();
             if (keyPressed.Key == ConsoleKey.D1)
             {
-                UstawPoziomLatwy();
+                UstawPoziomLatwy();  
+                SleepAndClearConsole();
             }
             else if (keyPressed.Key == ConsoleKey.D2)
             {
                 UstawPoziomSredni();
+                SleepAndClearConsole();
             }
             else if (keyPressed.Key == ConsoleKey.D3)
             {
                 UstawPoziomTrudny();
+                SleepAndClearConsole();
             }
             else if (keyPressed.Key == ConsoleKey.D0) ;
             else
@@ -129,18 +132,24 @@ namespace wytrych1
             Clear();
             Opcje.WyswietlOpcje(Opcje.CHANCE);
             keyPressed = Console.ReadKey(true);
-
+            Clear();
             if (keyPressed.Key == ConsoleKey.D1)
             {
-                UstawSzanseZlamaniaWytrycha(szansa);
+                szansa.UstawMalaSzanseZlamaniaWytrycha();
+                Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
+                SleepAndClearConsole();
             }
             else if (keyPressed.Key == ConsoleKey.D2)
             {
-                UstawSzanseZlamaniaWytrycha(szansa);
+                szansa.UstawSredniaSzanseZlamaniaWytrycha();
+                Console.WriteLine("Ustawiono średnią szanse złamania wytrycha");
+                SleepAndClearConsole();
             }
             else if (keyPressed.Key == ConsoleKey.D3)
             {
-                UstawSzanseZlamaniaWytrycha(szansa);
+                szansa.UstawDuzaSzanseZlamaniaWytrycha();
+                Console.WriteLine("Ustawiono dużą szanse złamania wytrycha");
+                SleepAndClearConsole();
             }
             else if (keyPressed.Key == ConsoleKey.D0)
             {
