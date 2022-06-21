@@ -9,34 +9,24 @@ namespace wytrych1
 {
     public class Menu
     {
-       // public int IloscWytrychow { get; set; }
-       // public int TempIloscWytrychow;
-        public int Szansa { get; set; }
-        public int DlugoscSekwencji { get; set; }
 
         public int IloscSkrzyni { get; set; }
 
         public int IloscPunktow { get; set; }
 
         public ConsoleKeyInfo keyPressed;
-        public int SzansaLatwy = 20;
-        public int SzansaSredni = 50;
-        public int SzansaTrudny = 80;
 
         private Random Rnd = new Random();
         public Szansa szansa = new Szansa();
         public Menu()
-        {   //domyslny poziom latwy <-- maszjakies zmienne typu SznsaXXX - moze to tutaj tzeba uzyc
+        {   
             szansa.SetSzansaLatwy();
-           // UstawPoziom(szansa);
         }
 
 
 
         public void UstawPoziomLatwy()
         {
-            //UstawPoziom(20, 4, SzansaLatwy);//SzansaXXX powinna byc klasa i powinna miec w sobie to 20 i 4
-            //i powinna byc metoda Ustawpoziom, ktora jakos bierze SzansaXXX i jak jej podstawie wszystko ustawia oraz wyswietla
             szansa.SetSzansaLatwy();
             Console.WriteLine("Ustawiono poziom łatwy");
             Console.WriteLine("Ilosc wytrychów: " + szansa.IloscWytrychow + "\nDługość sekwencji: " + szansa.DlugoscSekwencji);
@@ -57,30 +47,7 @@ namespace wytrych1
             SleepAndClearConsole(2000);
         }
 
-        public void UstawSzanseZlamaniaWytrycha(Szansa szansa)
-        {
-            Console.Clear();
-            if (szansa.Chance == szansa.Latwy)
-            {  
-                Szansa = szansa.Latwy;
-               
-            }
-            else if (szansa.Chance == szansa.Trudny)
-            {
-                Szansa = szansa.Trudny;
-                Console.WriteLine("Ustawiono dużą szanse złamania wytrycha");
-            }
-            else
-            {
-                
-                Szansa = szansa.Sredni;
-                Console.WriteLine("Ustawiono średnią szanse złamania wytrycha");
-               
-            }
 
-            
-            SleepAndClearConsole();
-        }
         public int GenerujIloscPunktow(Szansa szansa) 
         {
             if(szansa.min != szansa.max)
@@ -107,24 +74,25 @@ namespace wytrych1
             if (keyPressed.Key == ConsoleKey.D1)
             {
                 UstawPoziomLatwy();  
-                SleepAndClearConsole();
+               
             }
             else if (keyPressed.Key == ConsoleKey.D2)
             {
                 UstawPoziomSredni();
-                SleepAndClearConsole();
+              
             }
             else if (keyPressed.Key == ConsoleKey.D3)
             {
                 UstawPoziomTrudny();
-                SleepAndClearConsole();
+                
             }
             else if (keyPressed.Key == ConsoleKey.D0) ;
             else
             {
                 Console.WriteLine("Nieznana komenda!");
-                SleepAndClearConsole();
+               
             }
+
         }
 
         public void OptionsKeyPressedD2()
@@ -137,19 +105,19 @@ namespace wytrych1
             {
                 szansa.UstawMalaSzanseZlamaniaWytrycha();
                 Console.WriteLine("Ustawiono małą szanse złamania wytrycha");
-                SleepAndClearConsole();
+               
             }
             else if (keyPressed.Key == ConsoleKey.D2)
             {
                 szansa.UstawSredniaSzanseZlamaniaWytrycha();
                 Console.WriteLine("Ustawiono średnią szanse złamania wytrycha");
-                SleepAndClearConsole();
+               
             }
             else if (keyPressed.Key == ConsoleKey.D3)
             {
                 szansa.UstawDuzaSzanseZlamaniaWytrycha();
                 Console.WriteLine("Ustawiono dużą szanse złamania wytrycha");
-                SleepAndClearConsole();
+              
             }
             else if (keyPressed.Key == ConsoleKey.D0)
             {
@@ -158,9 +126,10 @@ namespace wytrych1
             else
             {
                 Console.WriteLine("Nieznana komenda!");
-                SleepAndClearConsole();
+               
 
             }
+            SleepAndClearConsole();
         }
         public void ShowInstructions()
         {
